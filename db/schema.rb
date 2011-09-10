@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20110910215604) do
     t.string   "price"
     t.string   "barter"
     t.string   "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

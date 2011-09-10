@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :price
       t.string :barter
       t.string :description
+      t.integer :user_id
 
       t.timestamps
     end
