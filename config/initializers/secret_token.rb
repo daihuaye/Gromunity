@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-GardenPower::Application.config.secret_token = 'd88abc313b5fd01c437b34693657d10ecb0e0ad0598d2ee3ebb3d275e03bb9bfa2cc0a0e940123bcd7f0ed43272c3bd04220efa37693de52dd25f94b964a0f5f'
+TestApp::Application.config.secret_token = '1fa1a370be32efcc2e889f31d899aa8e68896df745b7b4303de2c6d7e00e4eeca7868d254ec18b4d04fb43be40d1e19052f42d521487b0db82d98bf69b5b3219'

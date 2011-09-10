@@ -6,6 +6,10 @@ gem 'rails', '3.0.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem "authlogic"
+gem "rails3-generators"
+
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
