@@ -1,4 +1,6 @@
 GardenPower::Application.routes.draw do
+  get "posts/new"
+
   resources :users
 
   root :to => "users#index"
