@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Gromunity - together we grow</title>
-	<%= stylesheet_link_tag "master" %>
+	<%= stylesheet_link_tag "scaffold", "master" %>
 	<%= javascript_include_tag :defaults, "application" %>
 	<%= csrf_meta_tag %>
 </head>
@@ -14,8 +14,8 @@
         	<%- if current_user %>
 				<h1>Welcome, <%= link_to current_user.login, user_path(current_user.id) %>!</h1>
 	            <div class="notifications">
-	            	<a href="/my/messages">Messages</a>
-	                <a href="/my/notifications">Notifications</a>
+	            	<a class="icon messages" href="/my/messages">Messages</a>
+	                <a class="icon notifications" href="/my/notifications">Notifications</a>
 	            </div>
 	            <div class="me">
 					<%= link_to "Account Settings", edit_user_path(current_user.id) %>

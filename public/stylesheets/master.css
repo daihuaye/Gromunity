@@ -402,7 +402,8 @@ body > footer, #footer {
   #account h1 {
     font-weight: bold;
     font-size: 17.5px;
-    line-height: 1.2; }
+    line-height: 1.2;
+    margin-bottom: 10.5px; }
   #account a {
     color: #9ae48d;
     border-color: #f0f0f0; }
@@ -411,6 +412,30 @@ body > footer, #footer {
   #account .me a {
     padding: 3px 5px;
     background: #166007; }
+  #account .notifications {
+    width: 49px;
+    height: 24px;
+    float: right;
+    background: #166007; }
+    #account .notifications a.icon {
+      display: block;
+      float: left;
+      width: 24px;
+      height: 24px;
+      text-indent: -3000px;
+      overflow: hidden;
+      background-position: center center;
+      background-repeat: no-repeat; }
+      #account .notifications a.icon:hover {
+        background-color: #181818; }
+      #account .notifications a.icon.messages {
+        background-image: url("/images/css/icons/16/message.png"); }
+      #account .notifications a.icon.notifications {
+        background-image: url("/images/css/icons/16/notification.png");
+        float: right;
+        border-left: 1px solid #2f8520; }
+      #account .notifications a.icon.active {
+        background-color: #b4e85e; }
 
 #filter {
   margin: 21px 0; }

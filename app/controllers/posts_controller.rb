@@ -5,12 +5,18 @@ class PostsController < ApplicationController
   def index
     query = {}
     
-    params['scope'] = 'all'
+    unless params['scope']
+      params['scope'] = 'all'
+    end
     
     if params['cat'] && params['cat'] != 'all'
       query['category'] = params['cat'].capitalize()
     else
       params['cat'] = 'all'
+    end
+    
+    if params['type'] && params['type'] != 'all'
+      query['post_type'] = params['type'].capitalize()
     end
     
     if params['item'] && params['item'] != 'all'
