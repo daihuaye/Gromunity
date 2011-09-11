@@ -4,8 +4,10 @@ class MessagesController < ApplicationController
   def index
     # @messages = Message.all
     @message = nil
-    if current_user.messages.where(:sender_id => current_user.id)
+    if current_user.messages.where(:recipient_id => current_user.id)
       @message = current_user.messages
+      @message = @message.find(:recipient_id => current_user.id)
+      logger.debug "Show in the message index #{current_user.id}"
       logger.debug "Show in the message index #{@message}"
     end
 
@@ -35,6 +37,8 @@ class MessagesController < ApplicationController
   # GET /messages/new
   # GET /messages/new.xml
   def new
+    logger.debug "Here is recipient_id #{params[:id]}" 
+    logger.debug "Here is current_user id is #{current_user}"
     @message = Message.new(:sender_id => current_user.id, :recipient_id => params[:id])
     
     respond_to do |format|

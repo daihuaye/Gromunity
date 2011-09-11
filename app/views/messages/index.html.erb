@@ -7,9 +7,9 @@
   </tr>
 
 <% @message.each do |message| %>
-	<%- @sender = User.find(message.sender_id).login %>
+	<%#- @sender = User.find(message.recipient_id).login %>
   <tr>
-    <td><%= link_to @sender, message %></td>
+    <td><%= link_to User.find(message.sender_id).login, message %></td>
     <td><%= link_to message.title, message %></td>
     <td><%= link_to 'Delete', message, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
