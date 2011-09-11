@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Gromunity - together we grow</title>
+	<%= yield :head %> 
 	<%= stylesheet_link_tag "scaffold", "master" %>
 	<%= javascript_include_tag :defaults, "application" %>
 	<%= csrf_meta_tag %>
@@ -15,7 +16,7 @@
         	<%- if current_user %>
 				<h1>Welcome, <%= link_to current_user.login, user_path(current_user.id) %>!</h1>
 	            <div class="notifications">
-	            	<a class="icon messages" href="/my/messages">Messages</a>
+	            	<a class="icon messages" href="/messages">Messages</a>
 	                <a class="icon notifications" href="/my/notifications">Notifications</a>
 	            </div>
 	            <div class="me">
@@ -46,6 +47,7 @@
     </header>
 	
 <%= yield %>
+<%= yield :scripts %>
 <div id="footer-push"></div>
 </div>
 

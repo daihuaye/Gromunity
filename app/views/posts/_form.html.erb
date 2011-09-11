@@ -1,3 +1,14 @@
+<style type="text/css" media="screen">
+	#map-container {
+	  width: 800px;
+	}
+
+	#gmaps4rails_map {
+	  width: 800px;
+	  height: 400px;
+	}
+</style>
+
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -28,14 +39,32 @@
     <%= f.text_field :price %>
   </div>
   <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
     <%= f.label :barter %><br />
     <%= f.text_field :barter %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
   </div>
+	<div id="field">
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>		
+	</div>
+	<div id="field">
+    <%= f.label :gmaps %><br />
+    <%= f.text_field :gmaps %>		
+	</div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+<!-- <div id="map_container"> 
+  <div id="gmaps4rails_map"></div>
+</div>
+
+<button type="button" id="ajax_map">Ajax Map</button> -->
 <% end %>

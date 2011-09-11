@@ -4,4 +4,15 @@
 $(document).ready(function() {
   $('#scope-' + scope).addClass('active');
   $('#posts-' + cat).addClass('active');
+
+	$('#ajax_map').click(function(){
+		alert("hello world");
+		$('#map_container').addClass('map_container');
+		$('#gmaps4rails_map').addClass('gmaps4rails_map');
+		Gmaps4Rails.initialize();
+		Gmaps4Rails.direction_conf.origin = 'toulon, france';
+		Gmaps4Rails.direction_conf.destination = 'paris, france';
+		Gmaps4Rails.create_direction();
+	});
+
 });
