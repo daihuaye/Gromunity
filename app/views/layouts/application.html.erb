@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Gromunity: together we grow</title>
+	<title>Gromunity - together we grow</title>
 	<%= stylesheet_link_tag :all %>
 	<%= javascript_include_tag :defaults %>
 	<%= csrf_meta_tag %>
@@ -10,20 +10,46 @@
 	<script type="text/javascript">(function(w,d){if(w.location!=w.parent.location||w.location.search.indexOf('__preview_css__')>-1){var t=d.createElement('script');t.type='text/javascript';t.async=true;t.src='http://www.webputty.net/js/agtzfmNzc2ZpZGRsZXIMCxIEUGFnZRjPihcM';(d.body||d.documentElement).appendChild(t);}})(window,document);</script>
 </head>
 <body>
-	<div id="header">
-		<div id="logo"><a href="<%= root_path %>"><span id="gro">gro</span>munity</a></div>
-		<div id="user_nav">
-		<%- if current_user %>
-			Signed in as <span id="user_nav_username"><%= current_user.login %></span>. Not you?
-			<%= link_to "Sign out", logout_path %>
-		<%- else %>
-			<%= link_to "Sign in", login_path %> | 
-			<%= link_to "Create account", new_user_path %>
-		<%- end %>
-		</div>
-	</div>
+	<header>
+    	<h1>Gromunity</h1>
+    	<nav>
+	        <ul>
+	            <li>
+	            	<a href="/">Feed</a>
+	            </li>
+	            <li>
+	            	<a href="/users">Users</a>
+	            </li>
+	            <li>
+	            	<a href="/communities">Communities</a>
+	            </li>
+	            <li>
+	            	<a href="/events">Events</a>
+	            </li>
+	        </ul>
+    	</nav>
+
+        <section id="account">
+        	<%- if current_user %>
+				<h1>My Account</h1>
+	            <div class="notifications">
+	                <a href="/my/messages">Messages</a>
+	                <a href="/my/friendrequests">Friend Requests</a>
+	                <a href="/my/notifications">Notifications</a>
+	            </div>
+			<%- else %>
+				<%= link_to "Sign in", login_path %> | 
+				<%= link_to "Create account", new_user_path %>
+			<%- end %>
+        </section>
+    </header>
 	
 <%= yield %>
+
+	<footer>
+	    <p>Copyright 2011 Gromunity</p>
+	    <p>Designed and Implemented by Aiden, Alex, Alex, Jae, Jake and Raymond</p>
+	</footer>
 
 </body>
 </html>

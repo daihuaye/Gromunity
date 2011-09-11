@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :category %><br />
+    <%= select :post, :category, Array[ 'Produce', 'Compost', 'Tools', 'Help', 'Shout' ], :prompt => true %>
+  </div>
+  <div class="field">
     <%= f.label :post_type %><br />
-    <%= select :post, :post_type, Array[ 'Sell', 'Buy' ], :prompt => true %>
+    <%= select :post, :post_type, Array[ 'Offer', 'Request' ], :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :item %><br />
