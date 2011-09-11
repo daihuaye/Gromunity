@@ -7,7 +7,7 @@
 	<div class="post">
 		<div class="user-details">
 			<div class="user-pic">
-				
+				<img src="images/preggplant.jpg">
 			</div>
 			<div class="user-text">
 				<%= link_to User.find(post.user_id).login, user_path(post.user_id) %>
@@ -26,7 +26,8 @@
 			</div>
 			<div class="footer">
 				<%= link_to 'Edit', edit_post_path(post) %> |
-				<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %>
+				<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %> |
+				Listing made <%= post.created_at %>
 			</div>
 		</div>
 		<div class="clear"></div>
