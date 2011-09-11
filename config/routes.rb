@@ -1,4 +1,6 @@
 TestApp::Application.routes.draw do
+  resources :messages
+
   get "followings/create"
 
   get "posts/new"
