@@ -47,16 +47,17 @@
 <%- else %>
 	<ul class="stories">
 	<% @posts.each do |post| %>
+		<% user = User.find(post.user_id) %>
 
-		<li class="<%= post.category.downcase %>
-        	<%- unless post.category.downcase == 'shout' %>
+		<li class="<%= post.category ? post.category.downcase() : '' %>
+        	<%- unless post.category and post.category.downcase() == 'shout' %>
         		post.post_type
         	<%- end %>
         ">
             <div class="type">
-                <a href="/feed/<%= post.category.downcase %>" class="icon <%= post.category.downcase %>"><%= post.category %></a>
-                <%- unless post.category.downcase == 'shout' %>
-        			<a href="/feed/<%= post.post_type.downcase %>" class="icon <%= post.post_type.downcase %>"><%= post.post_type %></a>
+                <a href="/feed/<%= post.category ? post.category.downcase() : '' %>" class="icon <%= post.category ? post.category.downcase() : '' %>"><%= post.category %></a>
+                <%- unless post.category and post.category.downcase() == 'shout' %>
+        			<a href="/feed/<%= post.post_type.downcase() %>" class="icon <%= post.post_type.downcase() %>"><%= post.post_type %></a>
         		<%- end %>
             </div>
             <div class="story">
