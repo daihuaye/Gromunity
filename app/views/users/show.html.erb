@@ -1,25 +1,75 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @user.login %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-	<%- if current_user.id != @user.id %>
-	<%- if current_user.followings.find_by_following_user_id(@user.id) %>
-		<b><%= link_to "Not Follow Your Friend", not_following_user_url(@user.id) %></b>
+<section id="profile">
+	<section id="profileBox"> 
+		<p id="notice"><%= notice %></p>
+		
+		<h1 id="username"><%= @user.login %></h1>
+		<p>Gardener</p>
+		
+		<div class="avatar">
+			<img src="/images/pregplant.jpg" />
+		</div>
+		
+		<p>
+			<%- if current_user.id != @user.id %>
+				<%- if current_user.followings.find_by_following_user_id(@user.id) %>
+					<b><%= link_to "Unfollow this user", not_following_user_url(@user.id) %></b>
+				<%- else %>
+					<b><%= link_to "Follow this user", following_user_url(@user.id) %></b>
+				<%- end %>
+			<%- end %>
+		</p>
+	</section>
+	
+	<section id="feed">
+	<%- if @posts.count == 0 %>
+		<div class="notice">No posts found.</div>
 	<%- else %>
-		<b><%= link_to "Follow Your Friend", following_user_url(@user.id) %></b>
+		<ul class="stories">
+		<% @posts.each do |post| %>
+			<% user = User.find(post.user_id) %>
+			
+			<%- unless post.category %>
+				<% post.category = 'Shout' %>
+			<%- end %>
+	
+			<li class="<%= post.category.downcase() %><%- unless post.category and post.category.downcase() == 'shout' %> <%= post.post_type %><%- end %>">
+	            <div class="type">
+	                <a href="/feed/all/<%= post.category.downcase() %>" class="icon <%= post.category.downcase() %>" title="<%= post.category %>"><%= post.category %></a>
+	                <%- unless post.category and post.category.downcase() == 'shout' %>
+	        			<a href="/feed/all/<%= post.category.downcase() %>/type/<%= post.post_type.downcase() %>" class="icon <%= post.post_type.downcase() %>" title="<%= post.post_type %>"><%= post.post_type %></a>
+	        		<%- end %>
+	            </div>
+	            <div class="story">
+	                <%- if post.category.downcase() == 'shout' %>
+	                	<h2><%= link_to user.login, user_path(post.user_id) %> shouts:</h2>
+	            	<%- else %>
+	            		<h2><%= link_to user.login, user_path(post.user_id) %> is <%= post.post_type.downcase() %>ing <%= link_to post.item, '/item/' + post.item %></h2>
+	            	<%- end %>
+	                <blockquote>
+	                    <%= post.description %>
+	                </blockquote>
+	                <%- unless post.category.downcase() == 'shout' %>
+	                <div class="offer">
+	                    <div class="price">
+	                        Price: <em><%= post.price %></em>
+	                    </div>
+	                    <div class="barter">
+	                        Barter accepted? <em><%= post.barter %></em>
+	                    </div>
+	                </div>
+	                <%- end %>
+	            </div>
+	            <div class="data">
+	                <div class="time"><%= post.created_at %></div>
+	                <div class="location">Location goes here</div>
+	                <form action="/messages/new/<%= user.id %>">
+	                    <input type="hidden" name="post_ref" value="<%= post.id %>" />
+	                    <input type="submit" name"submit" value="Reply" title="Send <%= user.login %> a message" />
+	                </form>
+	            </div>
+	        </li>
+		<% end %>
+	    </ul>
 	<%- end %>
-	<% end %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', root_url %>
+	</section>
+</section>

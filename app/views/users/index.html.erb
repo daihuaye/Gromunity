@@ -1,1 +1,7 @@
-<h1 id="need_a_index_page.">Need a Index page.</h1>
+<h1>Gromunity Members</h1>
+
+<ul>
+	<% @users.each do |user| %>
+	<li><%= link_to user.login, user_path(user.id) %></li>
+	<% end %>
+</ul>

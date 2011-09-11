@@ -198,10 +198,46 @@ body > footer, #footer {
     }
 }
 
+#profileBox {
+    @include clearfix;
+    border: 1px solid $green-dark;
+    float: left;
+    margin-top: $line-height * 2;
+    padding: 5px;
+    text-align: center;
+    width: colspan(6);
+    
+    .avatar {
+        margin: 0 auto;
+    }
+    
+    #username {
+        font-size: 1.6em;
+        position: relative;
+        top: -0.6em;
+    }
+}
 
+#profile #feed {
+    float: right;
+
+    ul.stories li {
+        width: colspan(18);
+        
+        div.story {
+            width: colspan(12) - $line-height * 2;
+        }
+        
+        div.data {
+            width: colspan(6) - $line-height * 3 - 15px;
+        }
+    }
+}
 
 #feed {
     @include clearfix;
+    margin-bottom: $line-height;
+    
     ul.stories li {
         width: colspan(24);
         @include clearfix;
@@ -234,6 +270,9 @@ body > footer, #footer {
                 }
                 &.tools {
                     background-image: url("/images/css/icons/16/tools.png");
+                }
+                &.help {
+                    background-image: url("/images/css/icons/16/help.png");
                 }
                 &.offer {
                     background-image: url("/images/css/icons/16/offer.png");

@@ -10,14 +10,18 @@
       </ul>
     </div>
   <% end %>
+	<style type="text/css" media="screen">
+		div .messager label {
+			display: inline;
+		}
+	</style>
 
-  <div class="field">
+  <div class="field messager">
     <%= f.label :sender_id %> : <%= f.label current_user.login %>
 	<br />
   </div>
-  <div class="field">
-    <%= f.label :recipient_id %> :
-    <%= f.label User.find_by_id(@message.recipient_id).login %>
+  <div class="field messager">
+    <%= f.label :recipient_id %> : <%= f.label User.find_by_id(@message.recipient_id).login %>
   </div>
   <div class="field">
     <%= f.label :title %><br />

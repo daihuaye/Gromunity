@@ -108,16 +108,21 @@
             <div class="data">
                 <div class="time"><%= post.created_at %></div>
                 <div class="location">Location goes here</div>
+								<%- if current_user && user && current_user.id != user.id %>
                 <form action="/messages/new/<%= user.id %>">
                     <input type="hidden" name="post_ref" value="<%= post.id %>" />
                     <input type="submit" name"submit" value="Reply" title="Send <%= user.login %> a message" />
                 </form>
+								<%- else %>
+									<%= button_to "Edit", {:action => "edit", :id => post.id} %>
+								<%- end %>
             </div>
         </li>
 	<% end %>
     </ul>
 <%- end %>
 </section>
+
 <div id="footer-push"></div>
 <style type="text/css" media="screen">
 	.gmaps4rails_map {
@@ -131,4 +136,4 @@
           :last_map => true) %>
 
 
-					<% @circles_json = '[ {"lng": -122.214897, "lat": 37.772323, "radius": 1000000} ]' %>
+<% @circles_json = '[ {"lng": -122.214897, "lat": 37.772323, "radius": 1000000} ]' %>

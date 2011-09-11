@@ -5,8 +5,8 @@ class MessagesController < ApplicationController
     # @messages = Message.all
     @message = nil
     if current_user.messages.where(:sender_id => current_user.id)
-      @message = current_user.messages.where(:sender_id => current_user.id)
-      logger.debug "Show in the message index"
+      @message = current_user.messages
+      logger.debug "Show in the message index #{@message}"
     end
 
     respond_to do |format|
@@ -19,6 +19,8 @@ class MessagesController < ApplicationController
   # GET /messages/1.xml
   def show
     @message = current_user.messages.where(:sender_id => current_user.id)
+    logger.debug "This is messsage #{@message}"
+    @message = @message.last
     # logger.debug "Show in the messages"
     # debugger
     # if current_user.messages
@@ -57,7 +59,7 @@ class MessagesController < ApplicationController
   # PUT /posts/1.xml
   def update    
     @message = current_user.messages.where(:sender_id => current_user.id).last
-    
+    logger.debug "Here is suck"
   # @message.title = params[:message][:title]
   # @message.body  = params[:message][:body]
     
