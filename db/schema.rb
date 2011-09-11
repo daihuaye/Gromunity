@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20110911091903) do
   end
 
   create_table "messages", :force => true do |t|
+    t.integer  "user_id"
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.string   "title"

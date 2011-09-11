@@ -1,5 +1,6 @@
 <h1>Listing messages</h1>
 
+<%- if @messages %>
 <table>
   <tr>
     <th>From</th>
@@ -16,6 +17,9 @@
 <% end %>
 </table>
 
-<br />
+<% else %>
+	<br />
+	<h2>No messages</h2>
+<% end %>
 
-<%= link_to 'New Message', new_message_path %>
+<%#= link_to 'New Message', new_message_path %>

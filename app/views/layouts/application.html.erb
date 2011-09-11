@@ -33,7 +33,8 @@
         	<%- if current_user %>
 				<h1>My Account</h1>
 	            <div class="notifications">
-	                <a href="/my/messages">Messages</a>
+	                <!-- <a href="/my/messages">Messages</a> -->
+					<%= link_to "Messages", messages_url %>
 	                <a href="/my/friendrequests">Friend Requests</a>
 	                <a href="/my/notifications">Notifications</a>
 	            </div>

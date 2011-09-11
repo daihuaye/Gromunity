@@ -66,6 +66,9 @@
             </div>
             <div class="story">
                 <%- if post.category.downcase() == 'shout' %>
+					<%- if current_user && post.user_id != current_user.id %>
+						<%= link_to "Send Megs", "/message/new/#{post.user_id}" %>
+					<% end %>
                 	<h2><%= link_to user.login, user_path(post.user_id) %> shouts:</h2>
             	<%- else %>
             		<h2><%= link_to user.login, user_path(post.user_id) %> is <%= post.post_type.downcase() %>ing <%= link_to post.item, post.category.downcase() + '/' + post.item %></h2>
