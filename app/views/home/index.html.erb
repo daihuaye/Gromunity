@@ -1,51 +1,77 @@
-<h1>Listing posts</h1>
+<section id="filter">
+    <div id="scope">
+        <h1>Scope</h1>
+        <ul class="selector">
+            <li>
+            	<a href="/feed/all">All</a>
+            </li>
+            <li>
+            	<a href="/feed/near">Area</a>
+            </li>
+            <li>
+            	<a href="/feed/nearme">Near Me</a>
+            </li>
+            <li>
+            	<a href="/feed/friends">Friends</a>
+            </li>
+            <li>
+            	<a href="/feed/communities">Communities</a>
+            </li>
+        </ul>
+    </div>
+    <div id="type">
+        <h1>Posts</h1>
+        <ul class="selector">
+        	<li>
+        		<a href="/feed/produce">Produce</a>
+        	</li>
+        	<li>
+        		<a href="/feed/compost">Compost</a>
+        	</li>
+        	<li>
+        		<a href="/feed/tools">Tools</a>
+        	</li>
+        	<li>
+        		<a href="/feed/help">Help</a>
+        	</li>
+        	<li>
+        		<a href="/feed/shouts">Shouts</a>
+        	</li>
+        </ul>
+    </div>
+</section>
 
+<section id="feed">
 <%- if @posts.count == 0 %>
-	<div>No posts, yo!</div>
+	<div class="notice">No posts found.</div>
 <%- else %>
+	<ul class="stories">
 	<% @posts.each do |post| %>
-	<div class="post">
-		<div class="user-details">
-			<div class="user-pic">
-				<img src="images/preggplant.jpg">
-			</div>
-			<div class="user-text">
-				<%= link_to User.find(post.user_id).login, user_path(post.user_id) %>
-			</div>
-		</div>
-		<div class="post-details">
-			<div class="title">
-				<a href="<%= post %>"><%= post.post_type %>ing <%= post.item %></a>
-			</div>
-			<div class="description">
-				<%= post.description %>
-			</div>
-			<div class="price">
-				Price: <%= post.price %><br>
-				Barter accepted? <%= post.barter %>
-			</div>
-			<%#= debug current_user.id != post. %>
-			<%#= debug post.user_id %>
-			<%- if current_user.id == post.user_id %>
-			<div class="footer">
-				<%= link_to 'Edit', edit_post_path(post) %> |
-				<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %> |
-				Listing made <%= post.created_at %>
-			</div>
-			<% else %>
-			<div class="footer">
-				Listing made <%= post.created_at %>
-			</div>
-			<% end %>
-			
-		</div>
-		<div class="clear"></div>
-	</div>
+		<li class="<%= post.category.downcase %>
+        	<%- unless post.category.downcase == 'shout' %>
+        		post.post_type
+        	<%- end %>
+        ">
+            <div class="type">
+                <a href="/feed/<%= post.category.downcase %>" class="icon <%= post.category.downcase %>"><%= post.category %></a>
+                <%- unless post.category.downcase == 'shout' %>
+        			<a href="/feed/<%= post.post_type.downcase %>" class="icon <%= post.post_type.downcase %>"><%= post.post_type %></a>
+        		<%- end %>
+            </div>
+            <div class="story">
+                <h2><%= link_to user.login, user_path(post.user_id) %> shouts:</h2>
+                <blockquote>
+                    <%= post.description %>
+                </blockquote>
+                <div class="data">
+                    <div class="time"><%= post.created_at %></div>
+                    <div class="location">Location goes here</div>
+                </div>
+            </div>
+        </li>
 	<% end %>
+    </ul>
 <%- end %>
-
-<%- if current_user %>
-	<br />
-	<%= link_to 'New Post', new_post_path %>
-<%- end %>
+</section>
+<div id="footer-push"></div>
 
