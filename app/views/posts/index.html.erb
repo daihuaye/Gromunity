@@ -71,11 +71,7 @@
 			<% post.category = 'Shout' %>
 		<%- end %>
 
-		<li class="<%= post.category.downcase() %>
-        	<%- unless post.category and post.category.downcase() == 'shout' %>
-        		post.post_type
-        	<%- end %>
-        ">
+		<li class="<%= post.category.downcase() %><%- unless post.category and post.category.downcase() == 'shout' %> <%= post.post_type %><%- end %>">
             <div class="type">
                 <a href="/feed/<%= params['scope'] %>/<%= post.category.downcase() %>" class="icon <%= post.category.downcase() %>" title="<%= post.category %>"><%= post.category %></a>
                 <%- unless post.category and post.category.downcase() == 'shout' %>
