@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
         redirect_to new_user_session_url
         return false
       end
+      return true
     end
 
     def require_no_user
@@ -34,6 +35,7 @@ class ApplicationController < ActionController::Base
         redirect_to account_url
         return false
       end
+      return true
     end
 
     def store_location
