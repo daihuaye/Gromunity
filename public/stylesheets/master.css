@@ -537,6 +537,8 @@ body > footer, #footer {
         background-image: url("/images/css/icons/16/compost.png"); }
       #feed ul.stories li div.type a.icon.tools {
         background-image: url("/images/css/icons/16/tools.png"); }
+      #feed ul.stories li div.type a.icon.help {
+        background-image: url("/images/css/icons/16/help.png"); }
       #feed ul.stories li div.type a.icon.offer {
         background-image: url("/images/css/icons/16/offer.png"); }
       #feed ul.stories li div.type a.icon.request {
@@ -605,3 +607,29 @@ body > footer, #footer {
       margin-bottom: 21px; }
       #feed ul.stories li div.data div:last-child {
         margin: 0; }
+
+.error-page {
+  position: relative; }
+  .error-page.fourohfour {
+    background: url("/images/grothulu.png") no-repeat top left;
+    min-height: 800px; }
+    .error-page.fourohfour h2 {
+      position: absolute;
+      top: 380px;
+      left: 160px; }
+  .error-page h2 {
+    font-size: 300px;
+    color: #166007;
+    font-weight: bold;
+    text-shadow: 0px 6px 30px #2f8520; }
+  .error-page h3 {
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 21px;
+    background: #f0f0f0; }
+  .error-page p {
+    font-weight: bold;
+    font-size: 17.5px;
+    line-height: 1.2;
+    background: #f0f0f0; }

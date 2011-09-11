@@ -1,0 +1,30 @@
+.error-page {
+    position: relative;
+    &.fourohfour {
+        background: url("/images/grothulu.png") no-repeat top left;
+        min-height: 800px;
+        h2 {
+            position: absolute;
+            top: 380px;
+            left: 160px;
+        }
+
+    }
+
+    h2 {
+        font-size: 300px;
+        color: $green-dark;
+        font-weight: bold;
+        text-shadow: 0px 6px 30px $green;
+    }
+    h3 {
+        @include h2;
+        margin-bottom: $line-height;
+        background: $white;
+    }
+    p {
+        @include h4;
+        background: $white;
+    }
+}
+
