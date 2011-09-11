@@ -3,33 +3,35 @@
 <%- if @posts.count == 0 %>
 	<div>No posts, yo!</div>
 <%- else %>
-	<table>
-	  <tr>
-	    <th>Type</th>
-	    <th>Item</th>
-	    <th>Price</th>
-	    <th>Barter</th>
-	    <th>Description</th>
-		<th>User</th>
-		<th></th>
-		<th></th>
-		<th></th>
-	  </tr>
-	
 	<% @posts.each do |post| %>
-	  <tr>
-	    <td><%= post.post_type %></td>
-	    <td><%= post.item %></td>
-		<td><%= post.price %></td>
-		<td><%= post.barter %></td>
-		<td><%= post.description %></td>
-		<td><%= User.find(post.user_id).login %></td>
-	    <td><%= link_to 'Show', post %></td>
-	    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-	    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
-	  </tr>
+	<div class="post">
+		<div class="user-details">
+			<div class="user-pic">
+				
+			</div>
+			<div class="user-text">
+				<%= link_to User.find(post.user_id).login, user_path(post.user_id) %>
+			</div>
+		</div>
+		<div class="post-details">
+			<div class="title">
+				<a href="<%= post %>"><%= post.post_type %>ing <%= post.item %></a>
+			</div>
+			<div class="description">
+				<%= post.description %>
+			</div>
+			<div class="price">
+				Price: <%= post.price %><br>
+				Barter accepted? <%= post.barter %>
+			</div>
+			<div class="footer">
+				<%= link_to 'Edit', edit_post_path(post) %> |
+				<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
 	<% end %>
-	</table>
 <%- end %>
 
 <%- if current_user %>
