@@ -54,7 +54,7 @@
     </div>
     <div class="actions">
         <form action="/posts/new">
-            <input type="submit" name="niggawhat" value="new post" />
+            <input type="submit" name="newpost" value="New Post" />
         </form>
     </div>
 </section>
@@ -71,15 +71,11 @@
 			<% post.category = 'Shout' %>
 		<%- end %>
 
-		<li class="<%= post.category.downcase() %>
-        	<%- unless post.category and post.category.downcase() == 'shout' %>
-        		post.post_type
-        	<%- end %>
-        ">
+		<li class="<%= post.category.downcase() %><%- unless post.category and post.category.downcase() == 'shout' %> <%= post.post_type %><%- end %>">
             <div class="type">
-                <a href="/feed/<%= post.category.downcase() %>" class="icon <%= post.category.downcase() %>" title="<%= post.category %>"><%= post.category %></a>
+                <a href="/feed/<%= params['scope'] %>/<%= post.category.downcase() %>" class="icon <%= post.category.downcase() %>" title="<%= post.category %>"><%= post.category %></a>
                 <%- unless post.category and post.category.downcase() == 'shout' %>
-        			<a href="/feed/<%= post.post_type.downcase() %>" class="icon <%= post.post_type.downcase() %>" title="<%= post.post_type %>"><%= post.post_type %></a>
+        			<a href="/feed/<%= params['scope'] %>/<%= post.category.downcase() %>/type/<%= post.post_type.downcase() %>" class="icon <%= post.post_type.downcase() %>" title="<%= post.post_type %>"><%= post.post_type %></a>
         		<%- end %>
             </div>
             <div class="story">
@@ -97,7 +93,7 @@
                         Price: <em><%= post.price %></em>
                     </div>
                     <div class="barter">
-                        Barter accepted: <em><%= post.barter %></em>
+                        Barter accepted? <em><%= post.barter %></em>
                     </div>
                 </div>
                 <%- end %>
