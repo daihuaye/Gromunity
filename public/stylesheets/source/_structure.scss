@@ -14,16 +14,19 @@ body {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -1 * $footer-height;
+	margin: 0 auto -1 * $footer-height auto;
 	padding: 0 !important;
 	min-width: $page-min-width !important;
     width: $page-min-width;
 	overflow: hidden;
 	position: relative;
+
+    @include clearfix;
 }
 
 #footer-push {
 	height: $footer-height;
+    clear: both;
 }
 
 body > footer, #footer {
@@ -31,7 +34,6 @@ body > footer, #footer {
 	min-width: $page-min-width !important;
     width: $page-min-width - $line-height * 2;
     margin: 0 auto;
-    padding: $line-height;
     padding-bottom: 0;
     color: $light-text;
     background: $green;
@@ -42,6 +44,9 @@ body > footer, #footer {
         &:hover {
             color: #fff;
         }
+    }
+    p {
+        padding: 0 $line-height;
     }
 }
 
@@ -85,6 +90,7 @@ body > footer, #footer {
     }
     & > h1 {
         @include h3;
+        margin-top: $line-height;
     }
 }
 
@@ -147,6 +153,7 @@ body > footer, #footer {
 
 
 #feed {
+    @include clearfix;
     ul.stories li {
         width: colspan(24);
         @include clearfix;

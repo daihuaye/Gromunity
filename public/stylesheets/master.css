@@ -93,7 +93,7 @@ p {
   margin-bottom: 1.5em;
   line-height: 1.5; }
 
-strong {
+strong, b {
   font-weight: bold; }
 
 em {
@@ -298,22 +298,32 @@ body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -84px;
+  margin: 0 auto -84px auto;
   padding: 0 !important;
   min-width: 970px !important;
   width: 970px;
   overflow: hidden;
   position: relative; }
+  * + html #globalwrapper {
+    display: inline-block; }
+  * html #globalwrapper {
+    height: 1%; }
+  #globalwrapper:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
 
 #footer-push {
-  height: 84px; }
+  height: 84px;
+  clear: both; }
 
 body > footer, #footer {
   height: 84px;
   min-width: 970px !important;
   width: 928px;
   margin: 0 auto;
-  padding: 21px;
   padding-bottom: 0;
   color: #dadada;
   background: #2f8520; }
@@ -322,6 +332,8 @@ body > footer, #footer {
     border-color: #f0f0f0; }
     body > footer a:hover, #footer a:hover {
       color: #fff; }
+  body > footer p, #footer p {
+    padding: 0 21px; }
 
 /* PAGE STRUCTURE */
 #globalwrapper > header {
@@ -367,7 +379,8 @@ body > footer, #footer {
 #globalwrapper > h1 {
   font-weight: bold;
   font-size: 28px;
-  line-height: 1.5; }
+  line-height: 1.5;
+  margin-top: 21px; }
 
 #account {
   margin-top: 21px;
@@ -445,6 +458,16 @@ body > footer, #footer {
     border-bottom: 1px solid #166007;
     background: url("/images/css/indicator-3-dark.png") center bottom no-repeat; }
 
+* + html #feed {
+  display: inline-block; }
+* html #feed {
+  height: 1%; }
+#feed:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
 #feed ul.stories li {
   width: 950px;
   margin-top: 42px; }
