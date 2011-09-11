@@ -7,10 +7,22 @@
 <div id="globalwrapper">
     <header>
     	<h1>Gromunity</h1>
+        <section id="account">
+            <h1>My Account</h1>
+            <div class="notifications">
+                <a href="/my/messages">Messages</a>
+                <a href="/my/friendrequests">Friend Requests</a>
+                <a href="/my/notifications">Notifiations</a>
+            </div>
+            <div class="me">
+                <a href="/my/settings">Account Settings</a>
+                <a href="/logout">Log Out</a>
+            </div>
+        </section>
     	<nav>
         <ul>
             <li>
-            	<a href="/">Feed</a>
+            	<a class="active" href="/">Feed</a>
             </li>
             <li>
             	<a href="/users">Users</a>
@@ -24,14 +36,6 @@
         </ul>
     	</nav>
 
-        <section id="account">
-            <h1>My Account</h1>
-            <div class="notifications">
-                <a href="/my/messages">Messages</a>
-                <a href="/my/friendrequests">Friend Requests</a>
-                <a href="/my/notifications">Notifiations</a>
-            </div>
-        </section>
     </header>
 
     <section id="filter">
@@ -48,7 +52,7 @@
                 	<a href="/feed/nearme">Near Me</a>
                 </li>
                 <li>
-                	<a href="/feed/friends">Friends</a>
+                	<a class="active" href="/feed/friends">Friends</a>
                 </li>
                 <li>
                 	<a href="/feed/communities">Communities</a>
@@ -58,6 +62,9 @@
         <div id="type">
             <h1>Posts</h1>
             <ul class="selector">
+                <li>
+                    <a class="active" href="/feed/all">All</a>
+                </li>
             	<li>
             		<a href="/feed/produce">Produce</a>
             	</li>
@@ -75,6 +82,13 @@
             	</li>
             </ul>
         </div>
+        <div class="search">
+            <form action="/posts/">
+                <input type="text" name="search" placeholder="Search..."/>
+                <input type="submit" name="submit" value="Search"/>
+            </form>
+
+        </div>
     </section>
 
     <section id="feed">
@@ -88,10 +102,10 @@
                     <blockquote>
                         hey I'm new here. I love tomatoes. is anyone looking to grow tomatoes or have a garden that i can grow tomatoes in somewhere close to me?
                     </blockquote>
-                    <div class="data">
-                        <div class="time">11:45 PM Yesterday</div>
-                        <div class="location">Near People's Park in Berkeley, CA</div>
-                    </div>
+                </div>
+                <div class="data">
+                    <div class="time">11:45 PM Yesterday</div>
+                    <div class="location">Near People's Park in Berkeley, CA</div>
                 </div>
             </li>
             <li class="produce offer">
@@ -104,6 +118,14 @@
                     <blockquote>
                         About to pick these. They're prime and ripe, so good!
                     </blockquote>
+                    <div class="offer">
+                        <div class="price">
+                            Price: <em>$12/lb</em>
+                        </div>
+                        <div class="barter">
+                            Barter accpeted: <em>yes</em>
+                        </div>
+                    </div>
                 </div>
                 <div class="data">
                     <div class="time">10:45 PM Yesterday</div>
@@ -120,4 +142,5 @@
     <p>Designed and Implemented by Aiden, Alex, Alex, Jae, Jake and Raymond</p>
 </footer>
 
-
+</body>
+</html>
