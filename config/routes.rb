@@ -1,4 +1,8 @@
 TestApp::Application.routes.draw do
+  resources :messages
+
+  get "followings/create"
+
   get "posts/new"
   
   get "users/new"
@@ -14,6 +18,9 @@ TestApp::Application.routes.draw do
   match 'login' => "user_sessions#new",      :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
   
+  match 'following_user/:id' => "users#following_user", :as => :following_user
+  match 'not_following_user/:id' => 'users#not_following_user', :as => :not_following_user
+
   root :to => 'home#index'
 
   # The priority is based upon order of creation:

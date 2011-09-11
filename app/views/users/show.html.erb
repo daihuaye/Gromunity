@@ -10,6 +10,14 @@
   <%= @user.email %>
 </p>
 
+<p>
+	<%- if current_user.followings.find_by_following_user_id(@user.id) %>
+		<b><%= link_to "Not Follow Your Friend", not_following_user_url(@user.id) %></b>
+	<%- else %>
+		<b><%= link_to "Follow Your Friend", following_user_url(@user.id) %></b>
+	<%- end %>
+</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -1,6 +1,7 @@
 class CreatePosts < ActiveRecord::Migration
   def self.up
     create_table :posts do |t|
+      t.string :category
       t.string :post_type
       t.string :item
       t.string :price
