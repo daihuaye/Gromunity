@@ -124,6 +124,7 @@
 </section>
 
 <div id="footer-push"></div>
+
 <style type="text/css" media="screen">
 	.gmaps4rails_map {
 		height = 400px;
@@ -134,6 +135,5 @@
 <%= gmaps(:markers => {:data => @json, :options => {:do_clustering => true } },
           :map_options => { :auto_adjust => true, :zoom => 5 },
           :last_map => true) %>
-
 
 <% @circles_json = '[ {"lng": -122.214897, "lat": 37.772323, "radius": 1000000} ]' %>
