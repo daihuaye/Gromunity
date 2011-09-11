@@ -12,11 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :sender_id %><br />
+    <%= f.label :sender_id %> : <%= f.label current_user.login %>
+	<br />
   </div>
   <div class="field">
-    <%= f.label :recipient_id %><br />
-    <%= f.text_field :recipient_id %>
+    <%= f.label :recipient_id %> :
+    <%= f.label User.find_by_id(@message.recipient_id).login %>
   </div>
   <div class="field">
     <%= f.label :title %><br />
@@ -27,8 +28,8 @@
     <%= f.text_field :body %>
   </div>
   <div class="actions">
-  	<%= f.sender_id = current_user.id %>
-  	<%= f.hidden_field :message, :sender_id, %>
+  	<%#= f.sender_id = current_user.id %>
+  	<%#= f.hidden_field :message, :sender_id, %>
     <%= f.submit %>
   </div>
 <% end %>

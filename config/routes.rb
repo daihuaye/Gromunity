@@ -11,17 +11,22 @@ TestApp::Application.routes.draw do
 
   get "user_sessions/new"
   
+  get "messages/new"
+  
   resources :user_sessions
   resources :users
   resources :posts
+  resources :messages
 
   match 'login' => "user_sessions#new",      :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
+  match 'messages' => "messages#index", :as => :messages
+  match 'message/new/:id' => "messages#send_message"
   
   match 'following_user/:id' => "users#following_user", :as => :following_user
   match 'not_following_user/:id' => 'users#not_following_user', :as => :not_following_user
-
-  root :to => 'home#index'
+  
+  root :to => 'posts#index'
   
   match 'posts/:scope/:cat(/:item)' => "posts#index", :defaults => { :format => 'xml' }
   match 'feed/:scope/:cat(/:item)' => "posts#index"
