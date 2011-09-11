@@ -14,7 +14,7 @@
 		<div id="logo"><a href="<%= root_path %>"><span id="gro">gro</span>munity</a></div>
 		<div id="user_nav">
 		<%- if current_user %>
-			<%= "Signed in as #{current_user.email}. Not you?" %>
+			Signed in as <span id="user_nav_username"><%= current_user.login %></span>. Not you?
 			<%= link_to "Sign out", logout_path %>
 		<%- else %>
 			<%= link_to "Sign in", login_path %> | 

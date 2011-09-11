@@ -1,8 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>User:</b>
+  <%= User.find(@post.user_id).login %>
+</p>
+
+<p>
   <b>Type:</b>
   <%= @post.post_type %>
+</p>
+
+<p>
+  <b>Item:</b>
+  <%= @post.item %>
 </p>
 
 <p>
@@ -10,6 +20,15 @@
   <%= @post.price %>
 </p>
 
+<p>
+  <b>Barter:</b>
+  <%= @post.barter %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @post.description %>
+</p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', default_path %>

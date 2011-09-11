@@ -1,33 +1,39 @@
 <h1>Listing posts</h1>
 
-<table>
-  <tr>
-    <th>Type</th>
-    <th>Item</th>
-    <th>Price</th>
-    <th>barter</th>
-    <th>description</th>
-	<th>user id</th>
-	<th></th>
-	<th></th>
-	<th></th>
-  </tr>
+<%- if @posts.count == 0 %>
+	<div>No posts, yo!</div>
+<%- else %>
+	<table>
+	  <tr>
+	    <th>Type</th>
+	    <th>Item</th>
+	    <th>Price</th>
+	    <th>Barter</th>
+	    <th>Description</th>
+		<th>User</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	  </tr>
+	
+	<% @posts.each do |post| %>
+	  <tr>
+	    <td><%= post.post_type %></td>
+	    <td><%= post.item %></td>
+		<td><%= post.price %></td>
+		<td><%= post.barter %></td>
+		<td><%= post.description %></td>
+		<td><%= User.find(post.user_id).login %></td>
+	    <td><%= link_to 'Show', post %></td>
+	    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+	    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+<%- end %>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.post_type %></td>
-    <td><%= post.item %></td>
-	<td><%= post.price %></td>
-	<td><%= post.barter %></td>
-	<td><%= post.description %></td>
-	<td><%= post.user_id %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<%- if current_user %>
+	<br />
+	<%= link_to 'New Post', new_post_path %>
+<%- end %>
 
-<br />
-
-<%= link_to 'New Post', new_post_path %>
