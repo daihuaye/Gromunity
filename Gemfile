@@ -10,6 +10,7 @@ gem "authlogic"
 gem "rails3-generators"
 gem 'jquery-rails', '>= 1.0.12'
 gem 'gmaps4rails', :git => 'git://github.com/apneadiving/Google-Maps-for-Rails.git'
+gem 'geo_ip', '~> 0.3.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'
