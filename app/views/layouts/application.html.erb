@@ -42,22 +42,6 @@
 	            </li>
 	        </ul>
     	</nav>
-
-        <section id="account">
-        	<%- if current_user %>
-				<h1>My Account</h1>
-	            <div class="notifications">
-	                <!-- <a href="/my/messages">Messages</a> -->
-					<%= link_to "Messages", messages_url %>
-	                <a href="/my/friendrequests">Friend Requests</a>
-	                <a href="/my/notifications">Notifications</a>
-	            </div>
-			<%- else %>
-				<%= link_to "Sign in", login_path %> | 
-				<%= link_to "Create account", new_user_path %>
-			<%- end %>
-        </section>
-
     </header>
 	
 <%= yield %>
