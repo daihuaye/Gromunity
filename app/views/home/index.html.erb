@@ -1,21 +1,25 @@
 <section id="filter">
+	<script>
+		var scope = '<%= params['scope'] %>'
+		var cat = '<%= params['cat'] %>'
+	</script>
     <div id="scope">
         <h1>Scope</h1>
         <ul class="selector">
             <li>
-            	<a href="/feed/all">All</a>
+            	<a id="scope-all" href="/feed/all/<%= params['cat'] %>">All</a>
             </li>
             <li>
-            	<a href="/feed/near">Area</a>
+            	<a id="scope-area"  href="/feed/area/<%= params['cat'] %>">Area</a>
             </li>
             <li>
-            	<a href="/feed/nearme">Near Me</a>
+            	<a id="scope-nearme" href="/feed/nearme/<%= params['cat'] %>">Near Me</a>
             </li>
             <li>
-            	<a href="/feed/friends">Friends</a>
+            	<a id="scope-friends" href="/feed/friends/<%= params['cat'] %>">Friends</a>
             </li>
             <li>
-            	<a href="/feed/communities">Communities</a>
+            	<a id="scope-communities" href="/feed/communities/<%= params['cat'] %>">Communities</a>
             </li>
         </ul>
     </div>
@@ -23,19 +27,22 @@
         <h1>Posts</h1>
         <ul class="selector">
         	<li>
-        		<a href="/feed/produce">Produce</a>
+        		<a id="posts-all"  href="/feed/<%= params['scope'] %>/all">All</a>
         	</li>
         	<li>
-        		<a href="/feed/compost">Compost</a>
+        		<a id="posts-produce" href="/feed/<%= params['scope'] %>/produce">Produce</a>
         	</li>
         	<li>
-        		<a href="/feed/tools">Tools</a>
+        		<a id="posts-compost" href="/feed/<%= params['scope'] %>/compost">Compost</a>
         	</li>
         	<li>
-        		<a href="/feed/help">Help</a>
+        		<a id="posts-tools" href="/feed/<%= params['scope'] %>/tools">Tools</a>
         	</li>
         	<li>
-        		<a href="/feed/shouts">Shouts</a>
+        		<a id="posts-help" href="/feed/<%= params['scope'] %>/help">Help</a>
+        	</li>
+        	<li>
+        		<a id="posts-shouts" href="/feed/<%= params['scope'] %>/shouts">Shouts</a>
         	</li>
         </ul>
     </div>
@@ -74,7 +81,7 @@
                 <%- if post.category.downcase() == 'shout' %>
                 	<h2><%= link_to user.login, user_path(post.user_id) %> shouts:</h2>
             	<%- else %>
-            		<h2><%= link_to user.login, user_path(post.user_id) %> is <%= post.post_type.downcase() %>ing <%= link_to post.item, post.category.downcase() + '/' + post.item %></h2>
+            		<h2><%= link_to user.login, user_path(post.user_id) %> is <%= post.post_type.downcase() %>ing <%= link_to post.item, 'item/' + post.item %></h2>
             	<%- end %>
                 <blockquote>
                     <%= post.description %>
@@ -82,10 +89,10 @@
                 <%- unless post.category.downcase() == 'shout' %>
                 <div class="offer">
                     <div class="price">
-                        Price: <em>$12/lb</em>
+                        Price: <em><%= post.price %></em>
                     </div>
                     <div class="barter">
-                        Barter accepted: <em>yes</em>
+                        Barter accepted: <em><%= post.barter %></em>
                     </div>
                 </div>
                 <%- end %>
