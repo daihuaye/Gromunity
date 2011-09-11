@@ -48,20 +48,28 @@
 	<ul class="stories">
 	<% @posts.each do |post| %>
 		<% user = User.find(post.user_id) %>
+		
+		<%- unless post.category %>
+			<% post.category = 'Shout' %>
+		<%- end %>
 
-		<li class="<%= post.category ? post.category.downcase() : '' %>
+		<li class="<%= post.category.downcase() %>
         	<%- unless post.category and post.category.downcase() == 'shout' %>
         		post.post_type
         	<%- end %>
         ">
             <div class="type">
-                <a href="/feed/<%= post.category ? post.category.downcase() : '' %>" class="icon <%= post.category ? post.category.downcase() : '' %>"><%= post.category %></a>
+                <a href="/feed/<%= post.category.downcase() %>" class="icon <%= post.category.downcase() %>"><%= post.category %></a>
                 <%- unless post.category and post.category.downcase() == 'shout' %>
         			<a href="/feed/<%= post.post_type.downcase() %>" class="icon <%= post.post_type.downcase() %>"><%= post.post_type %></a>
         		<%- end %>
             </div>
             <div class="story">
-                <h2><%= link_to user.login, user_path(post.user_id) %> shouts:</h2>
+                <%- if post.category.downcase() == 'shout' %>
+                	<h2><%= link_to user.login, user_path(post.user_id) %> shouts:</h2>
+            	<%- else %>
+            		<h2><%= link_to user.login, user_path(post.user_id) %> is <%= post.post_type.downcase() %>ing <%= link_to post.item, post.category.downcase() + '/' + post.item %></h2>
+            	<%- end %>
                 <blockquote>
                     <%= post.description %>
                 </blockquote>
