@@ -640,3 +640,8 @@ body > footer, #footer {
         margin-bottom: 21px; }
         #feed ul.stories li div.data div:last-child {
           margin: 0; }
+#overview {
+  position: relative;
+  top: 1em;
+  font-size: 1.3em;
+}
