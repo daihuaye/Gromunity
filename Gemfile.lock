@@ -97,6 +97,7 @@ DEPENDENCIES
   geo_ip (~> 0.3.0)
   gmaps4rails!
   jquery-rails (>= 1.0.12)
+  json
   rails (= 3.0.7)
   rails3-generators
   sqlite3
