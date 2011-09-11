@@ -18,7 +18,7 @@
 	                <a class="icon notifications" href="/my/notifications">Notifications</a>
 	            </div>
 	            <div class="me">
-	                <a href="/my/settings">Account Settings</a>
+					<%= link_to "Account Settings", edit_user_path(current_user.id) %>
 	                <a href="/logout">Log Out</a>
 	            </div>
 			<%- else %>
@@ -50,7 +50,7 @@
 
 <footer>
     <p class="copyright">Copyright 2011 Gromunity</p>
-    <p>Designed and Implemented by Aiden, Alex, Alex, Jae, <a href="http://gplus.to/justjake">Jake</a> and Raymond</p>
+    <p>Designed and Implemented by Aiden, Alex, Alex, Jae, <a href="http://gplus.to/justjake">Jake</a> and <a href="http://dygames.site11.com/">Raymond</a></p>
 </footer>
 
 </body>
