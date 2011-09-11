@@ -47,17 +47,11 @@
         </ul>
     </div>
     <div class="search">
-        <form action="/feed/<%= params['scope'] %>/<%= params['cat'] %>">
-            <input type="text" name="item" placeholder="Search..."/>
+        <form action="/posts/">
+            <input type="text" name="search" placeholder="Search..."/>
             <input type="submit" name="submit" value="Search"/>
         </form>
     </div>
-    <div class="actions">
-        <form action="/posts/new">
-            <input type="submit" name="niggawhat" value="new post" />
-        </form>
-    </div>
-
 </section>
 
 <section id="feed">
@@ -85,12 +79,9 @@
             </div>
             <div class="story">
                 <%- if post.category.downcase() == 'shout' %>
-					<%- if current_user && post.user_id != current_user.id %>
-						<%= link_to "Send Megs", "/message/new/#{post.user_id}" %>
-					<% end %>
                 	<h2><%= link_to user.login, user_path(post.user_id) %> shouts:</h2>
             	<%- else %>
-            		<h2><%= link_to user.login, user_path(post.user_id) %> is <%= post.post_type.downcase() %>ing <%= link_to post.item, 'item/' + post.item %></h2>
+            		<h2><%= link_to user.login, user_path(post.user_id) %> is <%= post.post_type.downcase() %>ing <%= link_to post.item, '/item/' + post.item %></h2>
             	<%- end %>
                 <blockquote>
                     <%= post.description %>
@@ -101,7 +92,7 @@
                         Price: <em><%= post.price %></em>
                     </div>
                     <div class="barter">
-                        Barter accepted? <em><%= post.barter %></em>
+                        Barter accepted: <em><%= post.barter %></em>
                     </div>
                 </div>
                 <%- end %>
@@ -115,3 +106,5 @@
     </ul>
 <%- end %>
 </section>
+<div id="footer-push"></div>
+

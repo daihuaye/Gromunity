@@ -2,8 +2,24 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
-
+    query = {}
+    
+    params['scope'] = 'all'
+    
+    if params['cat'] && params['cat'] != 'all'
+      query['category'] = params['cat'].capitalize()
+    else
+      params['cat'] = 'all'
+    end
+    
+    if params['item'] && params['item'] != 'all'
+      query['item'] = params['item']
+    else
+      params['item'] = 'all'
+    end
+    
+    @posts = Post.where(query)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }

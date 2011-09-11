@@ -30,22 +30,18 @@ $button-selector:
 	
 //	@include gradient($grey, $white);
 //	background: $white url('../images/css/textfield-gradient.png') repeat-x;
-	@include prefix(box-shadow, 'inset #{$grey} 0px 3px 5px, #fff 0px 1px 0px, rgba(0,0,0,.1) 0px 0px 3px');
-	@include prefix(border-radius, 2px);
-	background: lighten($grey, 20%);
+
 	
 	
 	font-family: inherit;
 	font-size: inherit;
-	line-height: $line-height;
-	border: 1px solid $grey-border;
-	color: #666;
+	border: 1px solid $green-dark;
 	
-	padding: 0 3px;
+	padding: 3px;
 	
 	&:focus {
 		-webkit-appearance: none;
-		border-color: $black;
+		border-color: $pop;
 		@include gradient($white, #fff);
 		@include prefix(box-shadow, 'rgba(0,0,0,.2) 0px 0px 3px, inset #fff 0px 1px 0px');
 		color: $text-color;
@@ -59,7 +55,6 @@ textarea {
 
 input[type=search], input[type=text].search {
 	@include prefix(border-radius, 2em);
-	padding: 0 .6em;
 	
 	// handle webkit being silly
 	&::-webkit-search-results-button {
@@ -83,13 +78,9 @@ $button-shadow: rgba(0,0,0,.2) 0px 0px 5px;
 	color: inherit;
 	
 	//now style
-	border: 1px solid #737373;
-	@include prefix(border-radius, .6em);
 	
-	background: #bebebe;
-	@include gradient2(#e9e9e9, #bebebe, #d5d5d5);
+	background: $green-dark;
 	
-	@include prefix(box-shadow, '#{$button-shadow}, inset 0px 2px 1px #fff');
 	
 	padding: .3em .7em;
 	
@@ -97,12 +88,10 @@ $button-shadow: rgba(0,0,0,.2) 0px 0px 5px;
 	font-size: inherit;
 	line-height: 1.5;
 	
-	color: $text-color;
-	text-decoration: underline;
-	text-shadow: #fff 0px 1px 0px;
+	color: $light-text;
 	
 	&:hover {
-		@include gradient2(lighten(#e9e9e9, 5%), lighten(#bebebe, 5%), lighten(#d5d5d5, 5%));
+        background: $pop;
 	}
 	
 	&.positive {
@@ -158,3 +147,16 @@ option {
 		background: $exclamatory;
 	}
 }
+
+/* Ruby form styling */
+form {
+    div {
+        width: colspan(12);
+        line-height: $line-height * 2;
+
+        label {
+            @include h5;
+        }
+    }
+}
+

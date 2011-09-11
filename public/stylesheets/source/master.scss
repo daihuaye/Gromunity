@@ -3,12 +3,12 @@
 	stylesheet
 	(c) 2011 Jake Teton-landis
 */
-
+@charset "UTF-8";
 // CSS Reset
 @import "reset";
 
 //	TYPOGRAPHIC BASELINE	
-$font-size:		12px;
+$font-size:		14px;
 $line-height:	$font-size * 1.5;
 
 
@@ -16,6 +16,7 @@ $line-height:	$font-size * 1.5;
 $near-black: #181818;
 $grey: #acacac;
 $grey-border: #8b8b8b;
+$light-grey: #f0f0f0;
 
 $white:			#f0f0f0;
 $text-color:	#383838;
@@ -25,6 +26,10 @@ $light-text:	#dadada;
 
 $pop:			#2679d9;
 
+$green: #2f8520;
+$green-light: #b4e85e;
+$green-dark: #166007; 
+$pop:           $green;
 $exclamatory:#ece7aa;
 $exclamatory-border:#fff568;
 
@@ -134,15 +139,15 @@ body {
 }
 
 @mixin a {
-	color: $near-black;
+	color: $pop;
 	font-weight: bold;
 	&:hover {
-		color: $pop;
+		color: $near-black;
 	}
 	&:visited{
-		color: $near-black;
+		color: $pop;
 		&:hover {
-			color: $pop;
+			color: $near-black;
 		}
 		
 	}
@@ -240,6 +245,14 @@ a { @include a }
 	border-left: 3000px solid $color;
 	border-right: 3000px solid $color;
 }
+// nav lists
+@mixin nav {
+    li {
+        float: left;
+        margin-right: $line-height;
+        line-height: $line-height;
+    }
+}
 
 // instead of setting a restrictive and often obnoxious style on lists,
 // we use a default list style mixin whenever we want "normal" lists
@@ -262,19 +275,19 @@ a { @include a }
 /*
 	HEADINGS
 */
-h1 { @include h1 }
-h2 { @include h2 }
-h3 { @include h3 }
-h4 { @include h4 }
-h5 { @include h5 }
-h6 { @include h6 }
+//    h1 { @include h1 }
+//    h2 { @include h2 }
+//    h3 { @include h3 }
+//    h4 { @include h4 }
+//    h5 { @include h5 }
+//    h6 { @include h6 }
 /*
 	TEXT ELEMENTS
 */
 p {
 	@include text;
 }
-strong {
+strong, b {
 	font-weight: bold;
 }
 em {
@@ -297,3 +310,5 @@ em {
 // give all pages structure
 @import "structure";
 
+// lol ruby
+@import "../scaffold.css"

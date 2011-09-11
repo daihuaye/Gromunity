@@ -1,0 +1,279 @@
+/*
+	_structure.scss
+	Gives all pages thier basic structure
+*/
+
+/* Sticky Footer 
+	Based off http://ryanfait.com/sticky-footer/ 
+*/
+body {
+	background: $white ;
+}
+
+#globalwrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -1 * $footer-height auto;
+	padding: 0 !important;
+	min-width: $page-min-width !important;
+    width: $page-min-width;
+	overflow: hidden;
+	position: relative;
+
+    @include clearfix;
+}
+
+#footer-push {
+	height: $footer-height;
+    clear: both;
+}
+
+body > footer, #footer {
+	height: $footer-height;
+	min-width: $page-min-width !important;
+    width: $page-min-width - $line-height * 2;
+    margin: 0 auto;
+    padding-bottom: 0;
+    color: $light-text;
+    background: $green;
+	
+    a {
+        color: lighten($pop, 40);
+        border-color: $white;
+        &:hover {
+            color: #fff;
+        }
+    }
+    p {
+        padding: 0 $line-height;
+    }
+}
+
+/* PAGE STRUCTURE */
+#globalwrapper {
+    & > header {
+        border-bottom: 3px solid $green-dark;
+        padding-bottom: 10px;
+        @include clearfix;
+        & > h1 {
+            display: inline;
+            a {
+                display: block;
+                float: left;
+                background: url("/images/css/logotype.png");
+                width: 600px;
+                height: 126px; 
+                @include hidetext;
+            }
+
+        }
+        li {
+            display: inline;
+        }
+        li a {
+            display: block;
+            float: left;
+            line-height: $line-height * 2;
+            @include h4;
+            margin-right: $line-height;
+            &.active {
+                border-bottom: 1px solid $green-dark;
+                background: url("/images/css/indicator-3-dark.png") center bottom no-repeat;
+            }
+        }
+        nav {
+            display: block;
+            width: colspan(16);
+            float: left;
+        }
+    }
+    & > h1 {
+        @include h3;
+        margin-top: $line-height;
+    }
+}
+
+#account {
+    margin-top: $line-height;
+    float: right;
+    background: $green;
+    color: $light-text;
+    padding: $line-height;
+    width: colspan(8) - $line-height * 2;
+    line-height: $line-height;
+
+    h1 {
+        @include h4;
+    }
+
+    a {
+        color: lighten($pop, 40);
+        border-color: $white;
+        &:hover {
+            color: #fff;
+        }
+    }
+    .me a {
+        padding: 3px 5px;
+        background: $green-dark;
+    }
+}
+
+#filter {
+    margin: $line-height 0;
+    @include clearfix;
+    div {
+        @include clearfix;
+        margin-bottom: $line-height/2;
+        width: colspan(12);
+        float: left;
+        h1 {
+            @include h4;
+            float: left;
+            padding-right: $line-height;
+            border-right: 3px solid $green-dark;
+            margin-right: 10px;
+        }
+    }
+    ul {
+        @include nav;
+        @include clearfix;
+        a {
+            display: block;
+            line-height: $line-height * 1.1;
+        }
+        a.active {
+            border-bottom: 1px solid $green-dark;
+            background: url("/images/css/indicator-3-dark.png") center bottom no-repeat;
+        }
+    }
+}
+
+
+
+#feed {
+    @include clearfix;
+    ul.stories li {
+        width: colspan(24);
+        @include clearfix;
+        margin-top: $line-height * 2;
+
+
+        div.type {
+            float: left;
+            width: 24px;
+            background: $green-dark;
+
+            a.icon {
+                display: block;
+                height: 24px;
+                @include hidetext;
+                background-repeat: no-repeat;
+                background-position: center center;
+                &:hover {
+                    background-color: $green;
+                }
+
+                &.shout {
+                    background-image: url("/images/css/icons/16/shouts.png");
+                }
+                &.produce {
+                    background-image: url("/images/css/icons/16/produce.png");
+                }
+                &.compost {
+                    background-image: url("/images/css/icons/16/compost.png");
+                }
+                &.tools {
+                    background-image: url("/images/css/icons/16/tools.png");
+                }
+                &.offer {
+                    background-image: url("/images/css/icons/16/offer.png");
+                }
+                &.request {
+                    background-image: url("/images/css/icons/16/request.png");
+                }
+                &.exchange {
+                    background-image: url("/images/css/icons/16/exchange.png");
+                }
+            }
+        }
+        div.story {
+            background: #fff;
+            width: colspan(16) - $line-height * 2;
+            float: left;
+            border-top: 1px solid $green-dark;
+            border-bottom: 1px solid $green-dark;
+            border-left: 1px solid $green-dark;
+            border-right: 274px solid $green;
+            margin-right: -1 * (274px);
+            height: 100%;
+
+            padding: $line-height;
+            padding-left: $line-height * 2;
+            padding-top: 0;
+
+            a {
+                border-bottom: 1px solid $green;
+            }
+
+            h2 {
+                @include h4;
+                line-height: $line-height * 2;
+            }
+
+            blockquote {
+                position: relative;
+                line-height: $line-height;
+                &:before {
+                    font-size: 66px;
+                    color: $green;
+                    position: absolute;
+                    left: -1.5 * $line-height;
+                    content:'“';
+                }
+            }
+            .offer {
+                padding: 0 5px;
+                background: $white;
+                border: 1px solid $grey-border;
+                border-bottom: 0;
+                line-height: $line-height;
+                margin-top: $line-height;
+                margin-bottom: -1 * $line-height;
+                .price, .barter {
+                    display: inline-block;
+                    border-right: 1px solid $grey-border;
+                    padding-right: 5px;
+                    em {
+                        color: $pop;
+                    }
+                }
+                .barter {
+                    border-right: 0;
+                }
+            }
+        }
+
+        div.data {
+            float: left;
+            background: $green;
+            height: 100%;
+            color: $light-text;
+
+            width: colspan(8) - $line-height * 3 - 15px;
+
+
+            padding: $line-height;
+
+            div {
+                margin-bottom: $line-height;
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+
