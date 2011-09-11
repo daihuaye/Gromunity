@@ -20,7 +20,7 @@
 	            </div>
 	            <div class="me">
 					<%= link_to "Account Settings", edit_user_path(current_user.id) %>
-	                <a href="/logout">Log Out</a>
+	                <%= link_to "Log Out", logout_path %>
 	            </div>
 			<%- else %>
 				<%= link_to "Sign in", login_path %> | 
