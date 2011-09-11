@@ -10,7 +10,15 @@
 				<img src="images/preggplant.jpg">
 			</div>
 			<div class="user-text">
-				<%= link_to User.find(post.user_id).login, user_path(post.user_id) %>
+				<%- @cur_user = User.find(post.user_id) %>
+				<%= link_to @cur_user.login, user_path(post.user_id) %>
+				<%- if current_user.id != post.user_id %>
+					<%#- if current_user.followings.find_by_user_id() %>
+						
+					<%# else %>
+						| <%= link_to "Add me as Friend", following_user_path(@cur_user.id) %>
+					<%# end %>
+				<% end %>
 			</div>
 		</div>
 		<div class="post-details">

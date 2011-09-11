@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-
+    
     respond_to do |format|
       if @user.save
         format.html { redirect_to(@user, :notice => 'User was successfully created.') }
@@ -70,4 +70,13 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def following_user
+    
+    current_user.followings.build(:user_id => current_user.id, :following_user_id => params[:id])
+    return true
+    # current_user.followings.user_id = current_user.id
+    # current_user.followings.following_user_id = follower.id
+  end
+  
 end
