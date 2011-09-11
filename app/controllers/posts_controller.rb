@@ -25,7 +25,7 @@ class PostsController < ApplicationController
       params['item'] = 'all'
     end
     
-    @posts = Post.where(query)
+    @posts = Post.where(query).reverse
     
     respond_to do |format|
       format.html # index.html.erb
