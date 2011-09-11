@@ -522,91 +522,6 @@ body > footer, #footer {
     background: #166007; }
     #feed ul.stories li div.type a.icon {
       display: block;
-      height: 24px;
-      text-indent: -3000px;
-      overflow: hidden;
-      background-repeat: no-repeat;
-      background-position: center center; }
-      #feed ul.stories li div.type a.icon:hover {
-        background-color: #2f8520; }
-      #feed ul.stories li div.type a.icon.shout {
-        background-image: url("/images/css/icons/16/shouts.png"); }
-      #feed ul.stories li div.type a.icon.produce {
-        background-image: url("/images/css/icons/16/produce.png"); }
-      #feed ul.stories li div.type a.icon.compost {
-        background-image: url("/images/css/icons/16/compost.png"); }
-      #feed ul.stories li div.type a.icon.tools {
-        background-image: url("/images/css/icons/16/tools.png"); }
-      #feed ul.stories li div.type a.icon.help {
-        background-image: url("/images/css/icons/16/help.png"); }
-      #feed ul.stories li div.type a.icon.offer {
-        background-image: url("/images/css/icons/16/offer.png"); }
-      #feed ul.stories li div.type a.icon.request {
-        background-image: url("/images/css/icons/16/request.png"); }
-      #feed ul.stories li div.type a.icon.exchange {
-        background-image: url("/images/css/icons/16/exchange.png"); }
-  #feed ul.stories li div.story {
-    background: #fff;
-    width: 588px;
-    float: left;
-    border-top: 1px solid #166007;
-    border-bottom: 1px solid #166007;
-    border-left: 1px solid #166007;
-    border-right: 274px solid #2f8520;
-    margin-right: -274px;
-    height: 100%;
-    padding: 21px;
-    padding-left: 42px;
-    padding-top: 0; }
-    #feed ul.stories li div.story a {
-      border-bottom: 1px solid #2f8520; }
-    #feed ul.stories li div.story h2 {
-      font-weight: bold;
-      font-size: 17.5px;
-      line-height: 1.2;
-      line-height: 42px; }
-    #feed ul.stories li div.story blockquote {
-      position: relative;
-      line-height: 21px; }
-      #feed ul.stories li div.story blockquote:before {
-        font-size: 66px;
-        color: #2f8520;
-        position: absolute;
-        left: -31.5px;
-        content: '“'; }
-    #feed ul.stories li div.story .offer {
-      padding: 0 5px;
-      background: #f0f0f0;
-      border: 1px solid #8b8b8b;
-      border-bottom: 0;
-      line-height: 21px;
-      margin-top: 21px;
-      margin-bottom: -21px; }
-      #feed ul.stories li div.story .offer .price, #feed ul.stories li div.story .offer .barter {
-        display: inline-block;
-        border-right: 1px solid #8b8b8b;
-        padding-right: 5px; }
-        #feed ul.stories li div.story .offer .price em, #feed ul.stories li div.story .offer .barter em {
-          color: #2f8520; }
-      #feed ul.stories li div.story .offer .barter {
-        border-right: 0; }
-  #feed ul.stories li div.data {
-    float: left;
-    background: #2f8520;
-    height: 100%;
-    color: #dadada;
-    width: 232px;
-    padding: 21px; }
-    #feed ul.stories li div.data a.button:hover,
-    #feed ul.stories li div.data button:hover,
-    #feed ul.stories li div.data input[type=reset]:hover,
-    #feed ul.stories li div.data input[type=submit]:hover,
-    #feed ul.stories li div.data input[type=button]:hover {
-      background-color: #181818; }
-    #feed ul.stories li div.data div {
-      margin-bottom: 21px; }
-      #feed ul.stories li div.data div:last-child {
-        margin: 0; }
 
 .error-page {
   position: relative; }
@@ -633,3 +548,102 @@ body > footer, #footer {
     font-size: 17.5px;
     line-height: 1.2;
     background: #f0f0f0; }
+
+      height: 0;
+      clear: both;
+      visibility: hidden; }
+    #feed ul.stories li div.type {
+      float: left;
+      width: 24px;
+      background: #166007; }
+      #feed ul.stories li div.type a.icon {
+        display: block;
+        height: 24px;
+        text-indent: -3000px;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position: center center; }
+        #feed ul.stories li div.type a.icon:hover {
+          background-color: #2f8520; }
+        #feed ul.stories li div.type a.icon.shout {
+          background-image: url("/images/css/icons/16/shouts.png"); }
+        #feed ul.stories li div.type a.icon.produce {
+          background-image: url("/images/css/icons/16/produce.png"); }
+        #feed ul.stories li div.type a.icon.compost {
+          background-image: url("/images/css/icons/16/compost.png"); }
+        #feed ul.stories li div.type a.icon.tools {
+          background-image: url("/images/css/icons/16/tools.png"); }
+        #feed ul.stories li div.type a.icon.offer {
+          background-image: url("/images/css/icons/16/offer.png"); }
+        #feed ul.stories li div.type a.icon.request {
+          background-image: url("/images/css/icons/16/request.png"); }
+        #feed ul.stories li div.type a.icon.exchange {
+          background-image: url("/images/css/icons/16/exchange.png"); }
+    #feed ul.stories li div.story {
+      background: #fff;
+      width: 588px;
+      float: left;
+      border-top: 1px solid #166007;
+      border-bottom: 1px solid #166007;
+      border-left: 1px solid #166007;
+      border-right: 274px solid #2f8520;
+      margin-right: -274px;
+      height: 100%;
+      padding: 21px;
+      padding-left: 42px;
+      padding-top: 0; }
+      #feed ul.stories li div.story a {
+        border-bottom: 1px solid #2f8520; }
+      #feed ul.stories li div.story h2 {
+        font-weight: bold;
+        font-size: 17.5px;
+        line-height: 1.2;
+        line-height: 42px; }
+      #feed ul.stories li div.story blockquote {
+        position: relative;
+        line-height: 21px; }
+        #feed ul.stories li div.story blockquote:before {
+          font-size: 66px;
+          color: #2f8520;
+          position: absolute;
+          left: -31.5px;
+          content: '“'; }
+      #feed ul.stories li div.story .offer {
+        padding: 0 5px;
+        background: #f0f0f0;
+        border: 1px solid #8b8b8b;
+        border-bottom: 0;
+        line-height: 21px;
+        margin-top: 21px;
+        margin-bottom: -21px; }
+        #feed ul.stories li div.story .offer .price, #feed ul.stories li div.story .offer .barter {
+          display: inline-block;
+          border-right: 1px solid #8b8b8b;
+          padding-right: 5px; }
+          #feed ul.stories li div.story .offer .price em, #feed ul.stories li div.story .offer .barter em {
+            color: #2f8520; }
+        #feed ul.stories li div.story .offer .barter {
+          border-right: 0; }
+    #feed ul.stories li div.data {
+      float: left;
+      background: #2f8520;
+      height: 100%;
+      color: #dadada;
+      width: 232px;
+      padding: 21px; }
+      #feed ul.stories li div.data a.button:hover,
+      #feed ul.stories li div.data button:hover,
+      #feed ul.stories li div.data input[type=reset]:hover,
+      #feed ul.stories li div.data input[type=submit]:hover,
+      #feed ul.stories li div.data input[type=button]:hover {
+        background-color: #181818; }
+      #feed ul.stories li div.data div {
+        margin-bottom: 21px; }
+        #feed ul.stories li div.data div:last-child {
+          margin: 0; }
+#overview {
+  position: relative;
+  top: 1em;
+  font-size: 1.3em;
+}
+

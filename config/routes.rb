@@ -22,6 +22,7 @@ TestApp::Application.routes.draw do
   match 'logout' => "user_sessions#destroy", :as => :logout
   match 'messages' => "messages#index", :as => :messages
   match 'messages/new/:id' => "messages#send_message"
+  match 'about' => "about#index"
   
   match 'following_user/:id' => "users#following_user", :as => :following_user
   match 'not_following_user/:id' => 'users#not_following_user', :as => :not_following_user
