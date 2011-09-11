@@ -72,11 +72,30 @@ class UsersController < ApplicationController
   end
   
   def following_user
+    @user = User.find(params[:id])
     
-    current_user.followings.build(:user_id => current_user.id, :following_user_id => params[:id])
-    return true
-    # current_user.followings.user_id = current_user.id
-    # current_user.followings.following_user_id = follower.id
+    if !current_user.followings || !current_user.followings.find_by_following_user_id(@user.id)
+      @follow = current_user.followings.build(:user_id => current_user.id, :following_user_id => @user.id)
+      @follow.save
+      logger.debug "here is the current_user: #{current_user.id}"
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to :action => 'show', :id => @user.id }
+    end
   end
   
+  def not_following_user
+    @user = User.find(params[:id])
+    @follower = current_user.followings.find_by_following_user_id(@user.id)
+    current_user.followings.delete(@follower)
+    
+    if !current_user.followings.find_by_following_user_id(@user.id)
+      logger.debug "yeah delete it"
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to :action => 'show', :id => @user.id }
+    end
+  end
 end
