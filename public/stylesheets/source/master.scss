@@ -145,9 +145,9 @@ body {
 		color: $near-black;
 	}
 	&:visited{
-		color: $near-black;
+		color: $pop;
 		&:hover {
-			color: $pop;
+			color: $near-black;
 		}
 		
 	}
@@ -310,3 +310,5 @@ em {
 // give all pages structure
 @import "structure";
 
+// lol ruby
+@import "../scaffold.css"

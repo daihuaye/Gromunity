@@ -147,3 +147,16 @@ option {
 		background: $exclamatory;
 	}
 }
+
+/* Ruby form styling */
+form {
+    div {
+        width: colspan(12);
+        line-height: $line-height * 2;
+
+        label {
+            @include h5;
+        }
+    }
+}
+

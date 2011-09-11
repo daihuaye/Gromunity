@@ -1,4 +1,4 @@
-@charset "IBM437";
+@charset "UTF-8";
 /*
     GRO MUNITY
 	stylesheet
@@ -68,9 +68,9 @@ a {
   a:hover {
     color: #181818; }
   a:visited {
-    color: #181818; }
+    color: #2f8520; }
     a:visited:hover {
-      color: #2f8520; }
+      color: #181818; }
 
 * + html .clearfix {
   display: inline-block; }
@@ -276,6 +276,14 @@ option {
   option:focus {
     background: #ece7aa; }
 
+/* Ruby form styling */
+form div {
+  width: 470px;
+  line-height: 42px; }
+  form div label {
+    font-weight: bold;
+    line-height: 1.5; }
+
 /*
 	_structure.scss
 	Gives all pages thier basic structure
@@ -309,6 +317,11 @@ body > footer, #footer {
   padding-bottom: 0;
   color: #dadada;
   background: #2f8520; }
+  body > footer a, #footer a {
+    color: #9ae48d;
+    border-color: #f0f0f0; }
+    body > footer a:hover, #footer a:hover {
+      color: #fff; }
 
 /* PAGE STRUCTURE */
 #globalwrapper > header {
@@ -325,12 +338,15 @@ body > footer, #footer {
     clear: both;
     visibility: hidden; }
   #globalwrapper > header > h1 {
-    float: left;
-    background: url("/images/css/logotype.png");
-    width: 600px;
-    height: 126px;
-    text-indent: -3000px;
-    overflow: hidden; }
+    display: inline; }
+    #globalwrapper > header > h1 a {
+      display: block;
+      float: left;
+      background: url("/images/css/logotype.png");
+      width: 600px;
+      height: 126px;
+      text-indent: -3000px;
+      overflow: hidden; }
   #globalwrapper > header li {
     display: inline; }
   #globalwrapper > header li a {
@@ -348,18 +364,31 @@ body > footer, #footer {
     display: block;
     width: 630px;
     float: left; }
+#globalwrapper > h1 {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 1.5; }
 
 #account {
   margin-top: 21px;
   float: right;
-  background: #166007;
+  background: #2f8520;
   color: #dadada;
   padding: 21px;
-  width: 268px; }
+  width: 268px;
+  line-height: 21px; }
   #account h1 {
     font-weight: bold;
     font-size: 17.5px;
     line-height: 1.2; }
+  #account a {
+    color: #9ae48d;
+    border-color: #f0f0f0; }
+    #account a:hover {
+      color: #fff; }
+  #account .me a {
+    padding: 3px 5px;
+    background: #166007; }
 
 #filter {
   margin: 21px 0; }
@@ -499,6 +528,8 @@ body > footer, #footer {
         padding-right: 5px; }
         #feed ul.stories li div.story .offer .price em, #feed ul.stories li div.story .offer .barter em {
           color: #2f8520; }
+      #feed ul.stories li div.story .offer .barter {
+        border-right: 0; }
   #feed ul.stories li div.data {
     float: left;
     background: #2f8520;
@@ -510,3 +541,5 @@ body > footer, #footer {
       margin-bottom: 21px; }
       #feed ul.stories li div.data div:last-child {
         margin: 0; }
+
+@import url(../scaffold.css);
