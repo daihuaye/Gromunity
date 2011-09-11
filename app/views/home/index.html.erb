@@ -24,11 +24,20 @@
 				Price: <%= post.price %><br>
 				Barter accepted? <%= post.barter %>
 			</div>
+			<%#= debug current_user.id != post. %>
+			<%#= debug post.user_id %>
+			<%- if current_user.id == post.user_id %>
 			<div class="footer">
 				<%= link_to 'Edit', edit_post_path(post) %> |
 				<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %> |
 				Listing made <%= post.created_at %>
 			</div>
+			<% else %>
+			<div class="footer">
+				Listing made <%= post.created_at %>
+			</div>
+			<% end %>
+			
 		</div>
 		<div class="clear"></div>
 	</div>
