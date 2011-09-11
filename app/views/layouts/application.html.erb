@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TestApp</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+	<title>Gromunity: together we grow</title>
+	<%= stylesheet_link_tag :all %>
+	<%= javascript_include_tag :defaults %>
+	<%= csrf_meta_tag %>
+	  
+	<link rel="stylesheet" type="text/css" href="http://www.webputty.net/css/agtzfmNzc2ZpZGRsZXIMCxIEUGFnZRjPihcM" />
+	<script type="text/javascript">(function(w,d){if(w.location!=w.parent.location||w.location.search.indexOf('__preview_css__')>-1){var t=d.createElement('script');t.type='text/javascript';t.async=true;t.src='http://www.webputty.net/js/agtzfmNzc2ZpZGRsZXIMCxIEUGFnZRjPihcM';(d.body||d.documentElement).appendChild(t);}})(window,document);</script>
 </head>
 <body>
-	<div id="user_nav">
+	<div id="header">
+		<div id="logo">gromunity</div>
+		<div id="user_nav">
 		<%- if current_user %>
 			<%= "Signed in as #{current_user.email}. Not you?" %>
 			<%= link_to "Sign out", logout_path %>
 		<%- else %>
 			<%= link_to "Sign in", new_user_session_path %>
 		<%- end %>
+		</div>
 	</div>
+	
 <%= yield %>
 
 </body>
