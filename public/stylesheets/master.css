@@ -191,7 +191,8 @@ input[type=button] {
   input[type=reset]:hover,
   input[type=submit]:hover,
   input[type=button]:hover {
-    background: #2f8520; }
+    background: #2f8520;
+    cursor: pointer; }
   a.button.positive,
   button.positive,
   input[type=reset].positive,
@@ -594,9 +595,13 @@ body > footer, #footer {
     color: #dadada;
     width: 232px;
     padding: 21px; }
+    #feed ul.stories li div.data a.button:hover,
+    #feed ul.stories li div.data button:hover,
+    #feed ul.stories li div.data input[type=reset]:hover,
+    #feed ul.stories li div.data input[type=submit]:hover,
+    #feed ul.stories li div.data input[type=button]:hover {
+      background-color: #181818; }
     #feed ul.stories li div.data div {
       margin-bottom: 21px; }
       #feed ul.stories li div.data div:last-child {
         margin: 0; }
-
-@import url(../scaffold.css);

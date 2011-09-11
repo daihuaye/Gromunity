@@ -314,6 +314,13 @@ body > footer, #footer {
 
             padding: $line-height;
 
+            #{$button-selector} {
+                &:hover {
+                    background-color: $near-black;
+                }
+            }
+
+
             div {
                 margin-bottom: $line-height;
                 &:last-child {

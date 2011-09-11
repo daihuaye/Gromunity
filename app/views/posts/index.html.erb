@@ -101,6 +101,10 @@
             <div class="data">
                 <div class="time"><%= post.created_at %></div>
                 <div class="location">Location goes here</div>
+                <form action="/messages/new/<%= user.id %>">
+                    <input type="hidden" name="post_ref" value="<%= post.id %>" />
+                    <input type="submit" name"submit" value="Reply" title="Send <%= user.login %> a message" />
+                </form>
             </div>
         </li>
 	<% end %>
