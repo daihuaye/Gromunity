@@ -47,8 +47,8 @@
         </ul>
     </div>
     <div class="search">
-        <form action="/posts/">
-            <input type="text" name="search" placeholder="Search..."/>
+        <form action="/feed/<%= params['scope'] %>/<%= params['cat'] %>">
+            <input type="text" name="item" placeholder="Search..."/>
             <input type="submit" name="submit" value="Search"/>
         </form>
     </div>
@@ -98,7 +98,7 @@
                         Price: <em><%= post.price %></em>
                     </div>
                     <div class="barter">
-                        Barter accepted: <em><%= post.barter %></em>
+                        Barter accepted? <em><%= post.barter %></em>
                     </div>
                 </div>
                 <%- end %>
@@ -112,4 +112,3 @@
     </ul>
 <%- end %>
 </section>
-
