@@ -36,6 +36,13 @@ body > footer, #footer {
     color: $light-text;
     background: $green;
 	
+    a {
+        color: lighten($pop, 40);
+        border-color: $white;
+        &:hover {
+            color: #fff;
+        }
+    }
 }
 
 /* PAGE STRUCTURE */
@@ -45,11 +52,15 @@ body > footer, #footer {
         padding-bottom: 10px;
         @include clearfix;
         & > h1 {
-            float: left;
-            background: url("/images/css/logotype.png");
-            width: 600px;
-            height: 126px; 
-            @include hidetext;
+            display: inline;
+            a {
+                display: block;
+                float: left;
+                background: url("/images/css/logotype.png");
+                width: 600px;
+                height: 126px; 
+                @include hidetext;
+            }
 
         }
         li {
@@ -72,20 +83,35 @@ body > footer, #footer {
             float: left;
         }
     }
+    & > h1 {
+        @include h3;
+    }
 }
 
 #account {
     margin-top: $line-height;
     float: right;
-    background: $green-dark;
+    background: $green;
     color: $light-text;
     padding: $line-height;
     width: colspan(8) - $line-height * 2;
+    line-height: $line-height;
 
     h1 {
         @include h4;
     }
 
+    a {
+        color: lighten($pop, 40);
+        border-color: $white;
+        &:hover {
+            color: #fff;
+        }
+    }
+    .me a {
+        padding: 3px 5px;
+        background: $green-dark;
+    }
 }
 
 #filter {
@@ -215,6 +241,9 @@ body > footer, #footer {
                     em {
                         color: $pop;
                     }
+                }
+                .barter {
+                    border-right: 0;
                 }
             }
         }
