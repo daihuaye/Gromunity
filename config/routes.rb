@@ -30,6 +30,7 @@ TestApp::Application.routes.draw do
   
   match 'posts/:scope/:cat(/:item)' => "posts#index", :defaults => { :format => 'xml' }
   match 'feed/:scope/:cat(/:item)' => "posts#index"
+  match 'feed/:scope/:cat/type/:type' => "posts#index"
   match 'item/:item' => "posts#index"
 
   # The priority is based upon order of creation:
