@@ -39,6 +39,12 @@
         	</li>
         </ul>
     </div>
+    <div class="search">
+        <form action="/posts/">
+            <input type="text" name="search" placeholder="Search..."/>
+            <input type="submit" name="submit" value="Search"/>
+        </form>
+    </div>
 </section>
 
 <section id="feed">
@@ -59,9 +65,9 @@
         	<%- end %>
         ">
             <div class="type">
-                <a href="/feed/<%= post.category.downcase() %>" class="icon <%= post.category.downcase() %>"><%= post.category %></a>
+                <a href="/feed/<%= post.category.downcase() %>" class="icon <%= post.category.downcase() %>" title="<%= post.category %>"><%= post.category %></a>
                 <%- unless post.category and post.category.downcase() == 'shout' %>
-        			<a href="/feed/<%= post.post_type.downcase() %>" class="icon <%= post.post_type.downcase() %>"><%= post.post_type %></a>
+        			<a href="/feed/<%= post.post_type.downcase() %>" class="icon <%= post.post_type.downcase() %>" title="<%= post.post_type %>"><%= post.post_type %></a>
         		<%- end %>
             </div>
             <div class="story">
@@ -73,10 +79,20 @@
                 <blockquote>
                     <%= post.description %>
                 </blockquote>
-                <div class="data">
-                    <div class="time"><%= post.created_at %></div>
-                    <div class="location">Location goes here</div>
+                <%- unless post.category.downcase() == 'shout' %>
+                <div class="offer">
+                    <div class="price">
+                        Price: <em>$12/lb</em>
+                    </div>
+                    <div class="barter">
+                        Barter accepted: <em>yes</em>
+                    </div>
                 </div>
+                <%- end %>
+            </div>
+            <div class="data">
+                <div class="time"><%= post.created_at %></div>
+                <div class="location">Location goes here</div>
             </div>
         </li>
 	<% end %>

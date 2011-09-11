@@ -22,6 +22,9 @@ TestApp::Application.routes.draw do
   match 'not_following_user/:id' => 'users#not_following_user', :as => :not_following_user
 
   root :to => 'home#index'
+  
+  match 'posts/:scope/:cat(/:item)' => "posts#index", :defaults => { :format => 'xml' }
+  match 'feed/:cat(/:item)' => "posts#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
