@@ -11,13 +11,13 @@
 </head>
 <body>
 	<div id="header">
-		<div id="logo">gromunity</div>
+		<div id="logo"><a href="<%= root_path %>"><span id="gro">gro</span>munity</a></div>
 		<div id="user_nav">
 		<%- if current_user %>
 			<%= "Signed in as #{current_user.email}. Not you?" %>
 			<%= link_to "Sign out", logout_path %>
 		<%- else %>
-			<%= link_to "Sign in", new_user_session_path %> | 
+			<%= link_to "Sign in", login_path %> | 
 			<%= link_to "Create account", new_user_path %>
 		<%- end %>
 		</div>
