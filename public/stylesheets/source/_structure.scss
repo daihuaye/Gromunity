@@ -118,6 +118,7 @@ body > footer, #footer {
 
     h1 {
         @include h4;
+        margin-bottom: $line-height /2;
     }
 
     a {
@@ -131,6 +132,40 @@ body > footer, #footer {
         padding: 3px 5px;
         background: $green-dark;
     }
+    .notifications {
+        width: 24px * 2 + 1;
+        height: 24px;
+        float: right;
+        background: $green-dark;
+        a.icon {
+            display: block;
+            float: left;
+            width: 24px;
+            height: 24px;
+
+            @include hidetext; 
+            background-position: center center;
+            background-repeat: no-repeat;
+            &:hover {
+                background-color: $near-black;
+            }
+
+            &.messages {
+                background-image: url("/images/css/icons/16/message.png");
+            }
+            &.notifications {
+                background-image: url("/images/css/icons/16/notification.png");
+                float: right;
+                border-left: 1px solid $green;
+            }
+
+            &.active {
+                background-color: $green-light;
+            }
+
+        }
+    }
+
 }
 
 #filter {

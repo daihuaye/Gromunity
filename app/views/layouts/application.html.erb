@@ -14,8 +14,8 @@
         	<%- if current_user %>
 				<h1>Welcome, <%= link_to current_user.login, user_path(current_user.id) %>!</h1>
 	            <div class="notifications">
-	            	<a href="/my/messages">Messages</a>
-	                <a href="/my/notifications">Notifications</a>
+	            	<a class="icon messages" href="/my/messages">Messages</a>
+	                <a class="icon notifications" href="/my/notifications">Notifications</a>
 	            </div>
 	            <div class="me">
 	                <a href="/my/settings">Account Settings</a>
