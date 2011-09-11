@@ -22,6 +22,7 @@ body {
 	position: relative;
 
     @include clearfix;
+    z-index: 1;
 }
 
 #footer-push {
@@ -37,16 +38,28 @@ body > footer, #footer {
     padding-bottom: 0;
     color: $light-text;
     background: $green;
-	
+
+    position: relative;
+    z-index: 99;
+
     a {
         color: lighten($pop, 40);
         border-color: $white;
         &:hover {
             color: #fff;
         }
+        &:visited {
+            color:  lighten($pop, 40);
+        }
+
     }
     p {
         padding: 0 $line-height;
+        padding-top: $line-height/2;
+        margin: 0;
+    }
+    p.copyright {
+        padding-top: $line-height/2;
     }
 }
 
