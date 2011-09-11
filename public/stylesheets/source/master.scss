@@ -1,0 +1,312 @@
+/*
+    GRO MUNITY
+	stylesheet
+	(c) 2011 Jake Teton-landis
+*/
+@charset "UTF-8";
+// CSS Reset
+@import "reset";
+
+//	TYPOGRAPHIC BASELINE	
+$font-size:		14px;
+$line-height:	$font-size * 1.5;
+
+
+// Colors
+$near-black: #181818;
+$grey: #acacac;
+$grey-border: #8b8b8b;
+$light-grey: #f0f0f0;
+
+$white:			#f0f0f0;
+$text-color:	#383838;
+
+$black:			#000;
+$light-text:	#dadada;
+
+$pop:			#2679d9;
+
+$green: #2f8520;
+$green-light: #b4e85e;
+$green-dark: #166007; 
+$pop:           $green;
+$exclamatory:#ece7aa;
+$exclamatory-border:#fff568;
+
+$negative: rgba(139,0,0,.3);
+$negative-border: #700;
+
+$positive: rgba(0, 130, 0, .5);
+$positive-border: #070;
+
+// Sizes
+$column-width:	30px;
+$gutter-width:	10px;
+$column-count:	24;
+
+$page-min-width: $column-count * $column-width + ($column-count + 1) * 10px;
+
+$pane-width: 370px;
+
+$header-height: $line-height * 7;
+$footer-height: $line-height * 4; 
+
+// FUNCITONS
+
+// @function colspan
+//	Calculate pixel width from column count
+@function colspan( $count ) {
+	@return $count * $column-width + ($count - 1) * $gutter-width;
+}
+
+
+// @function mixsolid
+// mixes a color and ensures it is solid
+@function mix-solid( $trans, $bg ) {
+	@return fade-in( mix($trans, $bg), 1);
+}
+
+/*
+	MASTER.SCSS
+*/
+body {
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	color: $text-color;
+	font-size: $font-size;
+}
+
+// SCSS MIXINS
+// use inside with @include [mixin]
+
+@mixin h1( $margined: false ) {
+	font-weight: bold;
+	font-size: $font-size * 4;
+	line-height: 1.125;
+	
+	@if $margined {
+		margin-bottom: $line-height;
+	}
+}
+@mixin h2( $margined: false ) {
+	font-weight: bold;
+	font-size: $font-size * 3;
+	line-height: 1;
+	
+	@if $margined {
+		margin-bottom: $line-height;
+	}
+}
+@mixin h3( $margined: false ) {
+	font-weight: bold;
+	font-size: $font-size * 2;
+	// line-height: .75;
+	line-height: 1.5;
+	
+	
+	@if $margined {
+		margin-bottom: $line-height;
+	}
+}
+@mixin h4( $margined: false ) {
+	font-weight: bold;
+	font-size: $font-size * 1.25;
+	line-height: 1.2;
+	
+	@if $margined {
+		margin-bottom: $line-height;
+	}
+}
+@mixin h5( $margined: false ) {
+	font-weight: bold;
+	line-height: 1.5;
+	
+	@if $margined {
+		margin-bottom: $line-height;
+	}
+}
+@mixin h6( $margined: false ) {
+	font-weight: bold;
+	font-size: 9px;
+	line-height: $line-height;
+	@if $margined {
+		margin-bottom: $line-height;
+	}
+}
+
+@mixin text {
+	margin-bottom: 1.5em;
+	line-height: 1.5;
+}
+
+@mixin a {
+	color: $pop;
+	font-weight: bold;
+	&:hover {
+		color: $near-black;
+	}
+	&:visited{
+		color: $near-black;
+		&:hover {
+			color: $pop;
+		}
+		
+	}
+}
+a { @include a }
+////
+//	Utilities
+////
+
+// expands the property name with vendor prefixes so you cover all browsers
+// value should be a list.
+@mixin prefix( $prop, $value ) {
+	// vendor prefixes
+	-moz-#{$prop}:		#{$value};
+	-webkit-#{$prop}:	#{$value};
+	-o-#{$prop}: 		#{$value};
+	-khtml-#{$prop}:	#{$value};
+	-ms-#{$prop}:		#{$value};
+	// standard
+	#{$prop}:			#{$value};
+	// LOL IE
+//	behavior: url(PIE.php);
+}
+
+@mixin gradient( $from, $to ) {
+//	background-color: $from;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to)); 
+	background-image: -webkit-linear-gradient(top, $from, $to); 
+	background-image:    -moz-linear-gradient(top, $from, $to); 
+	background-image:     -ms-linear-gradient(top, $from, $to); 
+	background-image:      -o-linear-gradient(top, $from, $to); 
+	background-image:         linear-gradient(top, $from, $to);
+	          filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from}', EndColorStr='#{$to}'); 
+//	behavior: url(PIE.php);
+	
+}
+
+@mixin gradient2($from, $middle, $to) {
+	background: -moz-linear-gradient(top, $from 0%, $middle 50%, $to 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$from), color-stop(50%,$middle), color-stop(100%,$to));
+	background: -webkit-linear-gradient(top, $from 0%,$middle 50%,$to 100%);
+	background: -o-linear-gradient(top, $from 0%,$middle 50%,$to 100%);
+	background: -ms-linear-gradient(top, $from 0%,$middle 50%,$to 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$from}', endColorstr='#{$to}',GradientType=0 );
+	background: linear-gradient(top, $from 0%,$middle 50%,$to 100%);
+//	behavior: url(PIE.php);
+}
+
+// Change the color of selection highlights
+
+@mixin selection( $fg, $bg ) {
+	::selection {
+		background: $bg;
+		color: $fg;
+	}
+	::-moz-selection {
+		background: $bg;
+		color: $fg;
+	}
+}
+
+
+// use on boxes that contain floated elements to make them the right height
+@mixin clearfix {
+	// LOL IE7
+	*+html & {
+		display: inline-block;
+	}
+	// IE 6
+	* html & {
+		height: 1%;
+	}
+	&:after {
+		content: "."; 
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+.clearfix {
+	@include clearfix;
+}
+
+// used for image links and such to maintain accessability while visually hiding text
+@mixin hidetext {
+	text-indent: -3000px;
+	overflow: hidden;
+}
+
+// used for things inside .wrapper that need to be fullwidth
+@mixin borderhack( $color ) {
+	margin-left: -3000px;
+	margin-right: -3000px;
+	border-left: 3000px solid $color;
+	border-right: 3000px solid $color;
+}
+// nav lists
+@mixin nav {
+    li {
+        float: left;
+        margin-right: $line-height;
+        line-height: $line-height;
+    }
+}
+
+// instead of setting a restrictive and often obnoxious style on lists,
+// we use a default list style mixin whenever we want "normal" lists
+@mixin ul {
+	list-style: disc outside;
+	padding-left: 3em;
+	li {
+		@include text;
+	}
+}
+
+@mixin ol {
+	list-style: decimal outside;
+	padding-left: 3em;
+	li {
+		@include text;
+	}
+}
+
+/*
+	HEADINGS
+*/
+//    h1 { @include h1 }
+//    h2 { @include h2 }
+//    h3 { @include h3 }
+//    h4 { @include h4 }
+//    h5 { @include h5 }
+//    h6 { @include h6 }
+/*
+	TEXT ELEMENTS
+*/
+p {
+	@include text;
+}
+strong {
+	font-weight: bold;
+}
+em {
+	font-style: italic;
+}
+
+
+/* fix Jquery UI Selectable */
+.ui-selectable-helper {
+	display: none;
+}
+
+
+/*
+	FORMS
+*/
+// list of text elements. use with #{$textinput-selector} { css code here }
+// make forms beautifu;
+@import "forms";
+// give all pages structure
+@import "structure";
+
