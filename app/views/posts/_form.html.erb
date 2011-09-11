@@ -26,38 +26,33 @@
     <%= f.label :category %><br />
     <%= select :post, :category, Array[ 'Produce', 'Compost', 'Tools', 'Help', 'Shout' ], :prompt => true %>
   </div>
-  <div class="field">
+  <div class="field notForShout">
     <%= f.label :post_type %><br />
     <%= select :post, :post_type, Array[ 'Offer', 'Request' ], :prompt => true %>
   </div>
-  <div class="field">
+  <div class="field notForShout">
     <%= f.label :item %><br />
     <%= f.text_field :item %>
   </div>
-  <div class="field">
+  <div class="field notForShout">
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
+  <div class="field notForShout">
     <%= f.label :barter %><br />
     <%= f.text_field :barter %>
   </div>
-  <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
+  <div id="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
   </div>
-	<div id="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>		
-	</div>
-	<div id="field">
-    <%= f.label :gmaps %><br />
-    <%= f.text_field :gmaps %>		
-	</div>
+  <div class="field">
+  	<% GeoIp.api_key = 'b2420532cf30358ea9a073e01aa0d11b9378c832b2287d1f94e8d808f12bd968' %>
+  	<% geolocation = GeoIp.geolocation(request.remote_ip) %>
+  	
+    <%= f.label :address, 'City, State' %><br />
+    <%= f.text_field :address, :value => geolocation && geolocation['city'] ? geolocation['city'].capitalize() + ', ' + geolocation['state'].capitalize() : '' %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

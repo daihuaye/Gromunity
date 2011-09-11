@@ -5,8 +5,6 @@ class PostsController < ApplicationController
   def index
     query = {}
     
-    @json = Post.all.to_gmaps4rails
-    
     unless params['scope']
       params['scope'] = 'all'
     end
@@ -32,7 +30,6 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
-      format.json { render :json => @posts }
     end
   end
 

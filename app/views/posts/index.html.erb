@@ -1,7 +1,21 @@
 <style type="text/css" media="screen">
-	#map {
-	  width: 800px;
-	  height: 400px;		
+	.story .story-body {
+		min-height: 160px;
+	}
+	
+	.story .story-body .description {
+		float: left;
+		width: 263x;
+	}
+	
+	.story .story-body .map {
+		float: right;
+		width: 263px;
+	}
+	
+	.gmaps4rails_map, .map_container {
+	  width: 250px;
+	  height: 150px;		
 	}
 </style>
 
@@ -71,6 +85,8 @@
 	<div class="notice">No posts found.</div>
 <%- else %>
 	<ul class="stories">
+	<% numPosts = @posts.count %>
+	<% i = 0 %>
 	<% @posts.each do |post| %>
 		<% user = User.find(post.user_id) %>
 		
@@ -91,9 +107,26 @@
             	<%- else %>
             		<h2><%= link_to user.login, user_path(post.user_id) %> is <%= post.post_type.downcase() %>ing <%= link_to post.item, '/item/' + post.item %></h2>
             	<%- end %>
-                <blockquote>
-                    <%= post.description %>
-                </blockquote>
+            	<div class="story-body">
+            		<div class="description">
+		                <blockquote>
+		                    <%= post.description %>
+		                </blockquote>
+	                </div>
+                	<div class="map">
+                		<%
+		            		json = post.to_gmaps4rails()
+		            		map_params = {:markers => {:data => json, 
+				            	:options => {:do_clustering => true, :map_zoom => 5 } },
+					          	:map_options => { :id => 'map' + post.id.to_s(), :auto_adjust => true, :maxZoom => 13 },
+					          	:last_map => (i == numPosts - 1)}
+				        	if i != 0
+				        		map_params[:scripts] = :none
+				        	end
+			        	%>
+		            	<%= gmaps(map_params) %>
+		            </div>
+                </div>
                 <%- unless post.category.downcase() == 'shout' %>
                 <div class="offer">
                     <div class="price">
@@ -107,28 +140,16 @@
             </div>
             <div class="data">
                 <div class="time"><%= post.created_at %></div>
-                <div class="location">Location goes here</div>
+                <div class="location"><%= post.address %></div>
                 <form action="/messages/new/<%= user.id %>">
                     <input type="hidden" name="post_ref" value="<%= post.id %>" />
                     <input type="submit" name"submit" value="Reply" title="Send <%= user.login %> a message" />
                 </form>
             </div>
         </li>
+        <% i = i + 1 %>
 	<% end %>
     </ul>
 <%- end %>
 </section>
 <div id="footer-push"></div>
-
-<style type="text/css" media="screen">
-	.gmaps4rails_map {
-		height = 400px;
-		
-	}
-</style>
-
-<%= gmaps(:markers => {:data => @json, :options => {:do_clustering => true } },
-          :map_options => { :auto_adjust => true, :zoom => 5 },
-          :last_map => true) %>
-
-<% @circles_json = '[ {"lng": -122.214897, "lat": 37.772323, "radius": 1000000} ]' %>
