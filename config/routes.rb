@@ -26,7 +26,7 @@ TestApp::Application.routes.draw do
   match 'following_user/:id' => "users#following_user", :as => :following_user
   match 'not_following_user/:id' => 'users#not_following_user', :as => :not_following_user
   
-  root :to => 'home#index'
+  root :to => 'posts#index'
   
   match 'posts/:scope/:cat(/:item)' => "posts#index", :defaults => { :format => 'xml' }
   match 'feed/:scope/:cat(/:item)' => "posts#index"
