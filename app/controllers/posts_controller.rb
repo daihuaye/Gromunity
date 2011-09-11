@@ -24,7 +24,10 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    require_user
+    unless require_user
+      return
+    end
+    
     @post = Post.new
 
     respond_to do |format|
@@ -35,14 +38,20 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    require_user
+    unless require_user
+      return
+    end
+    
     @post = Post.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.xml
   def create
-    require_user
+    unless require_user
+      return
+    end
+    
     @post = Post.new(params[:post])
     
     # logger.debug "New user #{current_user}"
@@ -63,7 +72,10 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
-    require_user
+    unless require_user
+      return
+    end
+    
     @post = Post.find(params[:id])
 
     respond_to do |format|
@@ -80,7 +92,10 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.xml
   def destroy
-    require_user
+    unless require_user
+      return
+    end
+    
     @post = Post.find(params[:id])
     @post.destroy
 
