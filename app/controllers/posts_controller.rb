@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
+    
     query = {}
     
     @json = Post.all.to_gmaps4rails
@@ -27,8 +28,9 @@ class PostsController < ApplicationController
       params['item'] = 'all'
     end
     
+    # logger.debug "params is hello #{params}"
     @posts = Post.where(query)
-    
+    # @posts = Post.order("name").page(query).per(2)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }

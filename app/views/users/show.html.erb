@@ -1,5 +1,6 @@
 <section id="profile">
 	<section id="profileBox"> 
+		<%= require_user %>
 		<p id="notice"><%= notice %></p>
 		
 		<h1 id="username"><%= @user.login %></h1>
@@ -10,7 +11,7 @@
 		</div>
 		
 		<p>
-			<%- if current_user.id != @user.id %>
+			<%- if current_user && @user && current_user.id != @user.id %>
 				<%- if current_user.followings.find_by_following_user_id(@user.id) %>
 					<b><%= link_to "Unfollow this user", not_following_user_url(@user.id) %></b>
 				<%- else %>

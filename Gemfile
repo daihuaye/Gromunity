@@ -12,6 +12,7 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'gmaps4rails', :git => 'git://github.com/apneadiving/Google-Maps-for-Rails.git'
 gem 'geo_ip', '~> 0.3.0'
 gem 'json'
+gem 'kaminari'
 
 # Use unicorn as the web server
 # gem 'unicorn'
