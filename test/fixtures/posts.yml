@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  type: MyString
+  item: MyString
+  price: MyString
+  barter: MyString
+  description: MyString
+  user_id: 1
+
+two:
+  type: MyString
+  item: MyString
+  price: MyString
+  barter: MyString
+  description: MyString
+  user_id: 1

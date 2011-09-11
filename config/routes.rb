@@ -1,4 +1,6 @@
 TestApp::Application.routes.draw do
+  get "posts/new"
+  
   get "users/new"
 
   get "home/index"
@@ -7,6 +9,7 @@ TestApp::Application.routes.draw do
   
   resources :user_sessions
   resources :users
+  resources :posts
 
   match 'login' => "user_sessions#new",      :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
