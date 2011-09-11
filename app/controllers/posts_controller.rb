@@ -6,10 +6,14 @@ class PostsController < ApplicationController
     
     if params['cat'] && params['cat'] != 'all'
       query['category'] = params['cat'].capitalize()
+    else
+      params['cat'] = 'all'
     end
     
     if params['item'] && params['item'] != 'all'
       query['item'] = params['item']
+    else
+      params['item'] = 'all'
     end
     
     @posts = Post.where(query)
