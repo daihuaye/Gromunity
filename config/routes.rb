@@ -1,4 +1,6 @@
 TestApp::Application.routes.draw do
+  get "users/new"
+
   get "home/index"
 
   get "user_sessions/new"
