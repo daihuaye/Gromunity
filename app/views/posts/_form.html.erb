@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :post_type %><br />
-    <%= f.text_field :post_type %>
+    <%= select :post, :post_type, Array[ 'Sell', 'Buy' ], :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :item %><br />
