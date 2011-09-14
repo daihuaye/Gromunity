@@ -17,8 +17,27 @@
 	  width: 250px;
 	  height: 150px;		
 	}
+	
+	ol#pagination li {
+	    cursor: pointer;
+	    float: left;
+	    list-style: none outside none;
+	    margin: 0 0 0 0.5em;
+	}
+	ol#pagination li.current
+	{
+	    color: #FF0000;
+	    font-weight: bold;
+	}
 </style>
-<%#= paginate @posts %>
+
+<script type="text/javascript" charset="utf-8">
+	jQuery(function($){
+		$("ul.stories").easyPaginate();
+	});
+</script>
+
+<%#= will_paginate @posts %>
 <section id="filter">
 	<script>
 		var scope = '<%= params['scope'] %>'
@@ -156,6 +175,7 @@
 	<% end %>
     </ul>
 <%- end %>
+
 </section>
 
 <div id="footer-push"></div>

@@ -26,6 +26,8 @@ class PostsController < ApplicationController
     end
     
     @posts = Post.where(query).reverse
+    # debugger
+    # @posts = Post.paginate(:page => params[:page], :per_page => 2)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -66,6 +68,10 @@ class PostsController < ApplicationController
     end
     
     @post = Post.find(params[:id])
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @post }
+    end
   end
 
   # POST /posts

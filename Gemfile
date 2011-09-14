@@ -5,6 +5,7 @@ gem 'rails', '3.0.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+
 gem 'sqlite3'
 gem "authlogic"
 gem "rails3-generators"
@@ -13,6 +14,7 @@ gem 'gmaps4rails', :git => 'git://github.com/apneadiving/Google-Maps-for-Rails.g
 gem 'geo_ip', '~> 0.3.0'
 gem 'json'
 gem 'kaminari'
+gem 'will_paginate', '~> 3.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -23,6 +25,7 @@ gem 'kaminari'
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
 # gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug19', :require => 'ruby-debug', :group => :development  
 
 # Bundle the extra gems:
 # gem 'bj'

@@ -3,14 +3,16 @@ class MessagesController < ApplicationController
   # GET /messages.xml
   def index
     # @messages = Message.all
-    @message = nil
-    if current_user.messages.where(:recipient_id => current_user.id)
-      @message = current_user.messages
-      @message = @message.find(:recipient_id => current_user.id)
-      logger.debug "Show in the message index #{current_user.id}"
-      logger.debug "Show in the message index #{@message}"
+    @message = []
+    if Message.find_by_recipient_id(current_user.id)
+      # @message = current_user.messages
+      # @message = @message.find(:recipient_id => current_user.id)
+      
+      @message << Message.find_all_by_recipient_id(current_user.id)
+      logger.debug "Show in the message index #{@message.to_yaml}"
+      # debugger
     end
-
+  
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @messages }
@@ -20,14 +22,7 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.xml
   def show
-    @message = current_user.messages.where(:sender_id => current_user.id)
-    logger.debug "This is messsage #{@message}"
-    @message = @message.last
-    # logger.debug "Show in the messages"
-    # debugger
-    # if current_user.messages
-    #   @message = current_user.messages(params[:id])
-    # end
+    @message = Message.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @message }
@@ -50,8 +45,7 @@ class MessagesController < ApplicationController
   # GET /message/new/:user_id
   # GET /message/new/:user_id.xml  
   def send_message
-    # logger.debug  "params is #{params}"
-    @message = current_user.messages.build(:user_id => current_user.id, :sender_id => current_user.id, :recipient_id => params[:id])
+    @message = current_user.messages.build(:sender_id => current_user.id, :recipient_id => params[:id].to_i)
     @message.save
     respond_to do |format|
       format.html # send_message.html.erb
@@ -64,6 +58,7 @@ class MessagesController < ApplicationController
   def update    
     @message = current_user.messages.where(:sender_id => current_user.id).last
     logger.debug "Here is suck"
+    logger.debug "@message is #{@message.to_yaml}"
   # @message.title = params[:message][:title]
   # @message.body  = params[:message][:body]
     

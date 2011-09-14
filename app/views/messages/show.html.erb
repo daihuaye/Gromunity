@@ -8,6 +8,11 @@
 </p>
 
 <p>
+	<b>Recipient:</b>
+	<%= User.find(@message.recipient_id).login %>
+</p>
+
+<p>
   <b>Title:</b>
   <%= @message.title %>
 </p>
@@ -18,7 +23,7 @@
 </p>
 
 
-<%= link_to 'Back', root_url %>
+<%= link_to 'Back', messages_path %>
 
 <% else %>
 <p>Don't Have Messages</p>

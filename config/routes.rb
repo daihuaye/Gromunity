@@ -29,7 +29,8 @@ TestApp::Application.routes.draw do
   
   root :to => 'posts#index'
   
-  match 'posts/:scope/:cat(/:item)' => "posts#index", :defaults => { :format => 'xml' }
+  # match 'posts/:scope/:cat(/:item)' => "posts#index"#, :defaults => { :format => 'xml' }
+  match 'posts/:id/edit' => "posts#edit"
   match 'feed/:scope/:cat(/:item)' => "posts#index"
   match 'feed/:scope/:cat/type/:type' => "posts#index"
   match 'item/:item' => "posts#index"
